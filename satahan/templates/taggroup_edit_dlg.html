@@ -1,0 +1,23 @@
+<!-- Modal -->
+<div class="modal fade" id="taggroup_edit_dlg" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Edit Group</h4>
+        </div>
+        <div class="modal-body">
+            <p>Group name:</p>
+            <div ng-model="edit_idtaggroup"></div>
+            <input type=text size=30 ng-model = "edit_taggroupname">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" ng-click="taggroup_edit_ok_btn(edit_idtaggroup, edit_taggroupname)">Ok</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+</div>

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+    <form action="">
+        <input type="input" name="taggroupname">
+        <input formmethod=get formaction="{{ url_for('view_group') }}" class = "btn btn-primary" type=submit value="Search">
+    </form>
+    <p></p>
+
+    <div ng-controller="taggroup_ctrl" class="taggroup_ctrl">
+        <table style="table-layout: fixed;">
+        {% for row in taggroups|batch(3) %}
+            <tr>
+                {% for taggroup in row %}
+                    <td width = "500px">
+                        <a href="\?tg={{ taggroup.idtaggroup }}"> {{ taggroup.taggroupname }}</a>
+                    </td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+        </table>
+    </div>
+
+{% endblock %}

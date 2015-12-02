@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Share with Satahan</title>
+
+    <!-- Bootstrap -->
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <!--font-->
+    <link href='http://fonts.googleapis.com/css?family=Lora' rel='stylesheet'  type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Chewy' rel='stylesheet' type='text/css'>
+    <!--local css-->
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+
+    {% block header %}
+    {% endblock %}
+  </head>
+
+  <body>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js"></script>
+
+    <div ng-app = "main_app" ng-controller="main_ctrl">
+    {% block body %}
+
+        <nav class="navbar navbar-inverse">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="\">Satahan</a>
+            </div>
+            <div>
+              <ul class="nav navbar-nav">
+                {% if current_user.is_authenticated() %}
+                    <li><a href="\"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+                    <li><a href="{{ url_for('add_note', published=0) }}"><span class="glyphicon glyphicon-plus"></span> Create new</a></li>
+                    <li><a href="{{ url_for('add_note', published=0) }}"><span class="glyphicon glyphicon-pencil"></span> Draft</a></li>
+                    <li><a href="{{ url_for('manage_group') }}"><span class="glyphicon glyphicon-tags"></span> Groups</a></li>
+                    {% block extramenu %}
+                    {% endblock %}
+                {% else %}
+                    <li><a href="{{ url_for('view_group') }}"><span class="glyphicon glyphicon-tags"></span> Groups</a></li>
+                {% endif %}
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+                <li><a href="{{ url_for('about') }}"><span class="glyphicon glyphicon-info-sign"></span>  About</a></li>
+                {% if current_user.is_authenticated() %}
+                    <li><a href="{{ url_for('user.profile') }}"><span class="glyphicon glyphicon-user"></span>  User profile</a></li>
+                    <li><a href="{{ url_for('user.logout') }}"><span class="glyphicon glyphicon-log-out"></span> Sign out</a></li>
+                {% else %}
+                    <li><a href="{{ url_for('user.register') }}" ><span class="glyphicon glyphicon-registration-mark"></span> Register</a></li>
+                    <li><a href="{{ url_for('user.login') }}" ><span class="glyphicon glyphicon-log-in"></span> Sign in</a></li>
+                {% endif %}
+              </ul>
+            </div>
+          </div>
+          {% if show_tag_ctrl %}
+            <div ng-controller="tag_ctrl" class="tag_ctrl">
+                {% block tag_ctrl_script %}
+                {% endblock %}
+                <form action= "" method=get>
+                    {% block extend_tags %}
+                    {% endblock %}
+                </form>
+            </div>
+          {% endif %}
+        </nav>
+
+        {# One-time system messages called Flash messages #}
+        {% block flash_messages %}
+            {%- with messages = get_flashed_messages(with_categories=true) -%}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        {% if category=='error' %}
+                            {% set category='danger' %}
+                        {% endif %}
+                        <div class="alert alert-{{category}}">{{ message|safe }}</div>
+                    {% endfor %}
+                {% endif %}
+            {%- endwith %}
+        {% endblock %}
+
+        <div class=page>
+            {% block main %}
+            {% endblock %}
+        </div>
+
+        <div id="footer-div" class="well well-lg">
+            <div class="pull-left">Satahan v1.0</div>
+            <div class="pull-right">&copy; 2015</div>
+        </div>
+
+    {% endblock %}
+    </div>
+
+    <script src="{{ url_for('static', filename='scripts/satahan.js') }}"></script>
+  </body>

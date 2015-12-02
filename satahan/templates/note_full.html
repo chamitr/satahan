@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+{% endblock %}
+
+{% block main %}
+
+    {% set tag_delete_conf_dlg_idnote = full_note.idnote %}
+    {% include 'tag_delete_conf_dlg.html' %}
+
+    <a class = "btn btn-primary" href="{{ url_for('go_back') }}">Back</a>
+    {% if current_user.id == full_note.iduser or current_user.is_admin == 1 %}
+        <a class = "btn btn-primary" href="{{ url_for('edit_note', idnote = full_note.idnote) }}">Edit</a>
+        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#tag_delete_conf_dlg">Delete</button>
+    {% endif %}
+    <p></p>
+
+    {% for user in full_note.user %}
+    <!--http://apidock.com/ruby/DateTime/strftime-->
+    <p class = "username">{{user.username|safe}} <span class="createdatetime"> -
+        {{ full_note.createdatetime|timesince }}</span></p>
+    {% endfor %}
+    <div class="fullnote">
+    <h2>{{ full_note.title|safe }}</h2>
+    <p></p>
+    <p>{{ full_note.text|safe }}</p>
+    </div>
+
+    {% if attachments %}
+        <div class="well">
+            Attachments:
+            {% for attachment in attachments %}
+                <p><a href="{{ url_for('download', idnote=attachment.idnote, filename=attachment.filename) }}">{{ attachment.filename }}</a></p>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <p class = "comments">Comments: {{ full_note.comments_count }}</p>
+
+    {% if current_user.is_authenticated() %}
+    <form action="{{ url_for('add_comment') }}" method=post class=add_comment>
+      <dl>
+        <dt>Comment:
+        <dd><textarea maxlength="65535" name=text rows=5 cols=40 class="newComment"></textarea>
+        <dd><input class = "btn btn-primary" type=submit value=Share>
+        <dd><input type="text" name="note", value={{ full_note.idnote }} hidden>
+      </dl>
+    </form>
+    {% else %}
+      <dl>
+        <dt>Please login to comment.
+      </dt>
+    {% endif %}
+
+    {% for comment in comments %}
+    <div class = "comment">
+        {% for user in comment.user %}
+        <!--http://apidock.com/ruby/DateTime/strftime-->
+        <p class = "username">{{user.username|safe}} <span class="createdatetime">  {{ comment.createdatetime|timesince }}</span></p>
+        {% endfor %}
+        <div style="padding-top: 7px; padding-bottom: 7px">
+        {{ comment.text|safe }}
+        </div>
+    </div>
+    {% endfor %}
+
+{% endblock %}

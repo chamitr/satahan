@@ -1,0 +1,28 @@
+<div class="tag_ctrl_ex">
+    <ul class="nav nav-tabs">
+        {% for taggroup in usertaggroups %}
+            <li {% if taggroup == current_user_taggroup %}class="active"{% endif %}>
+                <a data-toggle="tab" href="?tg={{ taggroup.idtaggroup }}">{{ taggroup.taggroupname }}</a>
+            </li>
+        {% endfor %}
+        {% if current_user_taggroup %}
+            <input name="tg" value={{current_user_taggroup.idtaggroup}} hidden>
+        {% endif %}
+    </ul>
+
+    <table>
+      <tr>
+        <td style="vertical-align:top;">
+            <ul style="padding:0;margin:0; margin-top:10px;">
+            {% for tag in tags %}
+                <li style="width:100px; display: block; display: inline; ">
+                    <input class = "tag_checkbox" type="checkbox" id={{ tag.idtag }} name="t" value={{ tag.idtag }} ng-click="tag_onclick()"
+                     {% if tag.idtag|string in checked_tags %}checked{% endif %}/>
+                    <label for={{ tag.idtag }} class = "tag_btn"></label>{{ tag.tagname }}
+                </li>
+            {% endfor %}
+            </ul>
+        </td>
+      </tr>
+    </table>
+</div>

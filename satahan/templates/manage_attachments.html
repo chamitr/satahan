@@ -1,0 +1,30 @@
+<div>
+    <div class="well">
+            Attachments:
+            <p></p>
+            <form method=POST enctype=multipart/form-data action="{{ url_for('upload', idnote=idnote) }}">
+                <input type=file name=attachment>
+                <p></p>
+                <input class = "btn btn-primary" type="submit" value="Upload">
+            </form>
+
+        {% if attachments %}
+            <table style="table-layout: fixed;">
+                {% for attachment in attachments %}
+                <tr>
+                    <td width="24">
+                        <form method=POST action="">
+                            <button class="btn btn-xs btn-danger" type="submit" formaction="{{ url_for('delete_attachment', idnote=attachment.idnote, filename=attachment.filename) }}">
+                                <span class="glyphicon glyphicon-trash"></span>&nbsp;
+                            </button>
+                        </form>
+                    </td>
+                    <td width = "500px">
+                        <a href="{{ url_for('download', idnote=attachment.idnote, filename=attachment.filename) }}">{{ attachment.filename }}</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </table>
+        {% endif %}
+    </div>
+</div>

@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <script src="//cdn.ckeditor.com/4.5.2/standard/ckeditor.js"></script>
+{% endblock %}
+
+{% block extend_tags %}
+    {% include 'tag_ctrl.html' %}
+    {% if current_user_taggroup %}
+        <a href="{{ url_for('manage_tags', tg=current_user_taggroup.idtaggroup)}}" class="btn btn-primary">Edit tags in this group</a>
+    {% endif %}
+{% endblock %}
+
+{% block main %}
+    {% if current_user.is_authenticated() %}
+       <form action="" method=post class=edit-note>
+          <dl>
+            <dt>Title:
+            <dd><input type=text maxlength="255" name=title class="editNoteTitle" value = "{{ edit_note.title|safe }}" style="width:100%">
+            <p></p>
+            <dt>Text:
+            <dd><textarea maxlength="65535" name="notetext" id="notetext">{{edit_note.text|safe}}</textarea>
+            <dd><input type="text" name="note_tags" hidden>
+            <p></p>
+            <dd><input class = "btn btn-primary" type=submit value=Update>
+          </dl>
+        </form>
+        {% if edit_note and edit_note.idnote > 0 %}
+            {% set idnote=edit_note.idnote %}
+            {% include 'manage_attachments.html' %}
+        {% endif %}
+    {% endif %}
+
+{% endblock %}

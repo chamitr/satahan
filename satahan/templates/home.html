@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block extend_tags %}
+    {% include 'tag_ctrl.html' %}
+    <p></p>
+    <input class = "btn btn-primary" type=submit value=Search>
+    {% if favourite %}
+        {% if not defaut_tag_group %}
+            <input type = "button" class = "btn btn-primary" value="Set as default group" ng-click="default_taggroup()">
+        {% endif %}
+    {% else %}
+        <input type = "button" class = "btn btn-primary" value="Add to favourites" ng-click="manage_taggroup()">
+    {% endif %}
+    {% if current_user_taggroup %}
+        <a href="{{ url_for('manage_tags', tg=current_user_taggroup.idtaggroup)}}" class="btn btn-primary">Edit tags in this group</a>
+    {% endif %}
+
+    {% if current_user.is_admin %}
+        <p></p>
+        <input type="input" name="taggroupname" style="color:black;">
+        <button class="btn btn-primary" type="submit" formaction="{{ url_for('move_tags') }}">Move tags to group</button>
+        <p></p>
+        <input type="input" name="tagname" style="color:black;">
+        <button class="btn btn-primary" type="submit" formaction="{{ url_for('merge_tags') }}">Merge tags to target</button>
+    {% endif %}
+{% endblock %}
+
+{% block main %}
+<table>
+  {% for note in notes %}
+  <tr>
+    <td style="width:100%;vertical-align:top">
+        <div id="main-div">
+            <div data = {{ note.idnote }} class = "note" ng-click="showNote( {{ note.idnote }} )">
+                {% for user in note.user %}
+                    <p class = "username">{{user.username}} <span class="createdatetime">  {{ note.createdatetime|timesince }}</span></p>
+                {% endfor %}
+                <div style="padding-top: 7px; padding-bottom: 7px">
+                    <h2>{{ note.title|safe }}</h2>
+                    <p></p>
+                    <span class="notetext">{{ note.text|safe }}</span>
+                </div>
+                <p class = "comments">Comments: {{ note.comments_count }}</p>
+                {% if note.attachment_count > 0 %}
+                    <span class="glyphicon glyphicon-paperclip"></span>
+                {% endif %}
+            </div>
+        </div>
+    </td>
+  </tr>
+{% endfor %}
+</table>
+
+{{ pagination.links }}
+
+{% endblock %}

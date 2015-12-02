@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+{% endblock %}
+
+{% block main %}
+    <h4>Editing tags in group: {{ current_user_taggroup.taggroupname }}<h4>
+    <p></p>
+    <a class = "btn btn-primary" href="{{ url_for('go_back') }}">Back</a>
+    <button class = "btn btn-info" data-toggle="collapse" data-target="#tips">Tips</button>
+    <p></p>
+
+    <div id="tips" class="collapse">
+        <div class="panel panel-default">
+          <div class="panel-body">
+                <p>Descripton of buttons:</p>
+                <span class="glyphicon glyphicon-edit"></span>&nbsp; : Edit tag name.<br>
+                <span class="glyphicon glyphicon-trash"></span>&nbsp; : Delete tag not in use.<br>
+                <p></p>
+                <p>You have {{ user_settings.admin_points }} <a href="about#adminpoints">admin points</a>. Adding a tag requires 1 admin point. Edit and delete require 1 admin point.</p>
+          </div>
+        </div>
+    </div>
+
+    <div ng-controller="taggroup_ctrl" class="taggroup_ctrl">
+    {% include 'tag_edit_dlg.html' %}
+
+    <form action="{{ url_for('add_tag') }}" method=post>
+        <input type="input" name="tg" value={{current_user_taggroup.idtaggroup}} hidden>
+        <input type="input" name="tagname">
+        <input class = "btn btn-primary" type=submit value="Add tag">
+    </form>
+    <p></p>
+    <form action="" method=post>
+        <table style="table-layout: fixed;">
+        {% for row in tags|batch(3) %}
+            <tr>
+                {% for tag in row %}
+                    <td width="24" style="border-left: 1px solid #eee;">
+                        <button type="button" class="btn btn-xs btn-primary" data-toggle="modal" data-target="#tag_edit_dlg" ng-click="edit_tag_onclick({{tag.idtag}}, &quot;{{tag.tagname}}&quot;)">
+                            <span class="glyphicon glyphicon-edit"></span>&nbsp;
+                        </button>
+                    </td>
+                    <td width="24">
+                        {% if tag.idtag not in tags_in_use %}
+                            <button class="btn btn-xs btn-danger" type="submit" formaction="{{ url_for('delete_tag', idtaggroup = current_user_taggroup.idtaggroup, idtag = tag.idtag ) }}">
+                                <span class="glyphicon glyphicon-trash"></span>&nbsp;
+                            </button>
+                        {% endif %}
+                    </td>
+                    <td width = "500px">
+                        {{ tag.tagname }}
+                    </td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+        </table>
+    </form>
+
+    </div>
+
+{% endblock %}

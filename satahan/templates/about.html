@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block extend_tags %}
+{% endblock %}
+
+{% block main %}
+
+<div class="container">
+  <div class="jumbotron">
+    <h1>In short....</h1>
+    <p>Satahan is a notes, documents or ideas sharing website.</p>
+    <p><span class="glyphicon glyphicon-hand-right"></span>  To search and add groups to your favourites, go to <a class="btn btn-primary" href="{{ url_for('manage_group') }}" ><span class="glyphicon glyphicon-tags"></span>  Groups</a></p>
+    <p><span class="glyphicon glyphicon-hand-right"></span>  To view content without adding groups to your favourits, simply use hyperlinks in "Groups" page above.</p>
+    <p><span class="glyphicon glyphicon-hand-right"></span>  Use checkbox tags in groups and click Search buttons to search content that belongs to the group.</p>
+    <p><span class="glyphicon glyphicon-hand-right"></span>  To create new content, go to <a class="btn btn-primary" href="{{ url_for('add_note', published=0) }}"><span class="glyphicon glyphicon-plus"></span> Create new</a></p>
+    <p><span class="glyphicon glyphicon-hand-right"></span>  You can save your draft work and come back to it simply by clicking <a class="btn btn-primary" href="{{ url_for('add_note', published=0) }}"><span class="glyphicon glyphicon-pencil"></span> Draft</a></p>
+    <p><span class="glyphicon glyphicon-hand-right"></span>  If you need to add new tags into a group, please do so by clicking "Edit tags in this group" button in "Create new" page.</p>
+    <p><span class="glyphicon glyphicon-hand-right"></span>  Author of content has the permission to edit it. Edit and Delete option will be available to the author when content is viewed in full page mode.</p>
+    <hr>
+    <p><b>Content:</b></p>
+    <p>Content is the back born of any website. Satahan relies on its user community to share great content. All content published on Satahan belongs to the original author of the content. When publishing content, it is
+    important to use the correct location or group for the content so your target audience can be reached. If you cannot find a suitable group or tags, please feel free to create anew.</p>
+    <p>Yes, you can also attach downloadable files to your content. To add new content, go to <a class="btn btn-primary" href="{{ url_for('add_note', published=0) }}"><span class="glyphicon glyphicon-plus"></span> Create new</a></p>
+    <div id="adminpoints">
+    <p><b>Admin points:</b></p>
+    <p>Groups and tags used for content can be created, edited or deleted by user community. Admin points are designed to regulate this process. It does not mean to hinder any legitimate create, amend or delete of groups or
+    tags. You earn admin points when you publish content, you spend them when you create, amend or delete groups or tags for your content.</p>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

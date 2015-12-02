@@ -1,0 +1,173 @@
+.col-centered { float: none; margin: 0 auto; }
+
+body            { font-family: 'Lora', serif; font-size:13pt; }
+h1, h2          { color: #377BA8; margin: 0; }
+.header_table   { background-color:#900; }
+
+h2              { font-size: 1.2em; }
+
+.tag_ctrl       { margin: 10px;
+                  padding: 10px;
+                  color: white;
+                }
+
+.tag_ctrl_ex    {
+                  /*height:100px;*/
+                  overflow-x:hidden;
+                }
+
+.page           { width: 100% - 5px;
+                  background: #F5F5F5;/*#F5FEFF;*/
+                  min-height: 800px;
+                  margin: 10px;
+                  margin-left: 50px; margin-right:50px;
+                  }
+
+body           { background: #F5F5F5;/*#F5FEFF;*/ }
+.notes        { list-style: none; margin: 0; padding: 0; }
+.notes li     { margin: 0.8em 1.2em; }
+.notes li h2  { margin-left: -1em; }
+.add-note      { font-size: 0.9em; border-bottom: 1px solid #ccc; }
+.add-note dl   { font-weight: bold; }
+.metanav        { text-align: right; font-size: 0.8em; padding: 0.3em;
+                  margin-bottom: 1em; background: #fafafa; }
+.flash          { background: #CEE5F5; padding: 0.5em;
+                  border: 1px solid #AACBE2; }
+.error          { background: #F0D6D6; padding: 0.5em; }
+
+.note {
+    margin-bottom: 10px; padding: 10px; border-top-right-radius: 10px; border-bottom-left-radius: 10px;background:white;
+    border: 2px solid #F8F8F8;
+}
+
+.note:hover{
+    border-color: #900 !important;
+    box-shadow: 5px 5px 5px #888888;
+}
+
+.fullnote {
+    border: 1px solid grey;
+    margin-bottom:10px;
+    padding: 10px;
+    background: white;
+}
+
+.newNoteTitle {
+    width:100%;
+    border-radius: 4px;
+}
+
+.newNoteText {
+    width:100%;
+    height: 100px;
+    border-radius: 4px;
+}
+
+.username {
+    color: #900; margin: 0; font-size: 1.2em;
+}
+
+.createdatetime{
+    color: grey; margin: 0; font-size: 0.7em;
+}
+
+.comments {
+    color: grey; margin: 0; font-size: 0.7em;
+}
+
+.notetext {
+    color: #333; margin: 0; font-size: 1.0em;
+}
+
+.comment {
+    padding: 10px; border-top-right-radius: 10px; border-bottom-left-radius: 10px;
+    border: 2px solid #F8F8F8;
+}
+.comment:hover{
+    border-color: #900 !important;
+}
+
+.pagination-page-info {
+    padding: .6em;
+    padding-left: 0;
+    width: 40em;
+    margin: .5em;
+    margin-left: 0;
+    font-size: 12px;
+}
+
+.pagination-page-info b {
+    color: black;
+    background: #6aa6ed;
+    padding-left: 2px;
+    padding: .1em .25em;
+    font-size: 150%;
+}
+
+.navbar-inverse .navbar-brand {
+  font-family: "Chewy";
+  font-size:30pt;
+}
+
+.glyphicon:before {
+     visibility: visible;
+}
+.glyphicon.glyphicon-star-empty:checked:before {
+    content: "\e006";
+}
+input[type=checkbox].glyphicon{
+     visibility: hidden;
+}
+
+.well.well-lg
+{
+    background: #F5F5F5;/*#F5FEFF;*/
+}
+
+.tag_checkbox {
+    display:none;
+}
+
+.tag_checkbox + label {
+    display:inline-block;
+    width:19px;
+    height:19px;
+    vertical-align:middle;
+    background:url(check_radio_sheet.png) left top no-repeat;
+    cursor:pointer;
+}
+
+.tag_checkbox:checked + label {
+    background:url(check_radio_sheet.png) -19px top no-repeat;
+}
+
+.nav.nav-tabs a
+{
+    color:white;
+}
+
+.nav.nav-tabs a:hover
+{
+    color:#555555;
+}
+
+.taggroup_ctrl
+{
+    border-radius: 10px;
+    border: 1px solid grey;
+    background:white;
+    padding:10px;
+    box-shadow: 5px 5px 5px #888888;
+}
+
+/*
+input[type="checkbox"] {
+    display:none;
+}
+input[type="checkbox"]:checked + label {
+  color: #FFF; background: #900;
+}
+
+.tag_btn         { text-align: center; border-radius: 3px;}
+.tag_btn:hover   { color: #FFF; background: #900; }
+*/
