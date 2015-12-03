@@ -5,7 +5,6 @@ from flask_user import login_required, current_user
 from model import db, Tag, TagGroup, UserSettings, tags
 from satahan import app, back
 from admin_points import AdminPoints
-from sqlalchemy import update
 
 @app.route('/add_tag', methods=['GET', 'POST'])
 @login_required
