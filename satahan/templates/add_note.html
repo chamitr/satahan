@@ -33,6 +33,7 @@
         <dt>Text:
         <dd><textarea maxlength="65535" name="notetext" id="notetext">{{ new_note.text|safe }}</textarea>
         <p></p>
+        <p><span class="glyphicon glyphicon-info-sign"></span> All contents are public with global visibility except drafts.</p>
         <dd><input formaction= "{{ url_for('add_note', published=0) }}" class = "btn btn-primary" type=submit value="Save draft">
           <input formaction= "{{ url_for('delete_draft') }}" class = "btn btn-primary" type=submit value="Delete draft">
           <input formaction= "{{ url_for('add_note', published=1) }}" class = "btn btn-primary" type=submit value=Share>
