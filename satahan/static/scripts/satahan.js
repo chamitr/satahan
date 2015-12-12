@@ -63,6 +63,12 @@ main_app.controller('tag_ctrl', function($scope, $http, $window) {
            alert("Failed to add group to favourites.");
         });
     };
+
+    $scope.gotoPage = function(page) {
+       holder = document.getElementsByName('tagpagetable')[0]
+       tags = document.getElementsByName('tagpage'+page)[0]
+       holder.scrollTop = tags.offsetTop;
+    };
 })
 
 main_app.controller('taggroup_ctrl', function($scope, $http, $window) {
@@ -86,10 +92,11 @@ main_app.controller('taggroup_ctrl', function($scope, $http, $window) {
     //End edit taggroup dialog
 
     //Edit tag dialog
-    $scope.tag_edit_ok_btn = function(edit_idtag, edit_tagname){
+    $scope.tag_edit_ok_btn = function(edit_idtag, edit_tagname, edit_tagpage){
         var edit_data = {};
         edit_data["edit_idtag"] = edit_idtag;
         edit_data["edit_tagname"] = edit_tagname;
+        edit_data["edit_tagpage"] = edit_tagpage;
         var json_filter = JSON.stringify(edit_data);
         $http.get("/edit_tag", {params: {"p": json_filter}}  )
         .success(function (response) {
@@ -97,9 +104,10 @@ main_app.controller('taggroup_ctrl', function($scope, $http, $window) {
         });
     };
 
-    $scope.edit_tag_onclick = function(edit_idtag, edit_tagname){
+    $scope.edit_tag_onclick = function(edit_idtag, edit_tagname, edit_tagpage){
         $scope.edit_idtag = edit_idtag;
         $scope.edit_tagname = edit_tagname;
+        $scope.edit_tagpage = edit_tagpage;
     }
     //End edit tag dialog
  })

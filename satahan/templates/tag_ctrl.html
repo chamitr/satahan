@@ -10,19 +10,66 @@
         {% endif %}
     </ul>
 
-    <table>
+    {# tag pages are in use #}
+    {% if tagpages|length > 1 %}
+        <ul style="padding:0px;">
+        {% for page in tagpages %}
+            <li style="display: inline;"><a href="" ng-click="gotoPage('{{ page }}')">{{ page }}</a></li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+
+    <div name="tagpagetable" class="tagpagetable">
+    <table style="table-layout: fixed;">
       <tr>
-        <td style="vertical-align:top;">
-            <ul style="padding:0;margin:0; margin-top:10px;">
-            {% for tag in tags %}
-                <li style="width:100px; display: block; display: inline; ">
-                    <input class = "tag_checkbox" type="checkbox" id={{ tag.idtag }} name="t" value={{ tag.idtag }} ng-click="tag_onclick()"
-                     {% if tag.idtag|string in checked_tags %}checked{% endif %}/>
-                    <label for={{ tag.idtag }} class = "tag_btn"></label>{{ tag.tagname }}
-                </li>
-            {% endfor %}
-            </ul>
-        </td>
+
+            <td style="vertical-align:top;">
+                <ul style="padding:0;margin:0;">
+                    {# tag pages are in use #}
+                    {% if tagpages|length > 1 %}
+
+                        {% set previous_page = "" %}
+                        {% for tag in tags %}
+
+                            {# when page changes, start new div and close the previous div #}
+                            {% if tag.tagpage != previous_page %}
+                                {# don't close the previous div if this is the first loop #}
+                                {% if previous_page != "" %}
+                                    </div>
+                                {% endif %}
+                                {# start new div section for tag page #}
+                                    <div name="tagpage{{tag.tagpage}}">
+                                {% set previous_page = tag.tagpage %}
+                            {% endif %}
+
+                            <li class = "tags">
+                                <input class = "tag_checkbox" type="checkbox" id={{ tag.idtag }} name="t" value={{ tag.idtag }} ng-click="tag_onclick()"
+                                 {% if tag.idtag|string in checked_tags %}checked{% endif %}/>
+                                <label for={{ tag.idtag }} class = "tag_btn"></label>{{ tag.tagname }}
+                            </li>
+
+                        {% endfor %}
+
+                        {# for the tag pages in use case above, close the last div #}
+                        {% if tagpages|length > 1 %}
+                            </div>
+                        {% endif %}
+
+                    {% else %}
+                        {# tag pages are not in use #}
+                        {% for tag in tags %}
+                            <li class = "tags">
+                                <input class = "tag_checkbox" type="checkbox" id={{ tag.idtag }} name="t" value={{ tag.idtag }} ng-click="tag_onclick()"
+                                 {% if tag.idtag|string in checked_tags %}checked{% endif %}/>
+                                <label for={{ tag.idtag }} class = "tag_btn"></label>{{ tag.tagname }}
+                            </li>
+                        {% endfor %}
+
+                    {% endif %}
+                </ul>
+            </td>
+
       </tr>
     </table>
+    </div>
 </div>

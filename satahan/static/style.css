@@ -13,7 +13,7 @@ h2              { font-size: 1.2em; }
 
 .tag_ctrl_ex    {
                   /*height:100px;*/
-                  overflow-x:hidden;
+                  /*overflow-x:hidden;*/
                 }
 
 .page           { width: 100% - 5px;
@@ -158,6 +158,19 @@ input[type=checkbox].glyphicon{
     background:white;
     padding:10px;
     box-shadow: 5px 5px 5px #888888;
+}
+
+.tagpagetable
+{
+    overflow-y: scroll;
+    height: 150px;
+}
+
+.tags
+{
+    width: 100px;
+    display: block;
+    display: inline;"
 }
 
 /*

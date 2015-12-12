@@ -20,6 +20,7 @@
                 <span class="glyphicon glyphicon-trash"></span>&nbsp; : Delete tag not in use.<br>
                 <p></p>
                 <p>You have {{ user_settings.admin_points }} <a href="about#adminpoints">admin points</a>. Adding a tag requires 1 admin point. Edit and delete require 1 admin point.</p>
+                <p>Use optional Tag page to organize your tags when you have many.</p>
           </div>
         </div>
     </div>
@@ -29,8 +30,12 @@
 
     <form action="{{ url_for('add_tag') }}" method=post>
         <input type="input" name="tg" value={{current_user_taggroup.idtaggroup}} hidden>
+        <p>Tag name:</p>
         <input type="input" name="tagname">
         <input class = "btn btn-primary" type=submit value="Add tag">
+        <p></p>
+        <p>Tag page (optional):</p>
+        <input type="input" name="tagpage">
     </form>
     <p></p>
     <form action="" method=post>
@@ -39,7 +44,12 @@
             <tr>
                 {% for tag in row %}
                     <td width="24" style="border-left: 1px solid #eee;">
-                        <button type="button" class="btn btn-xs btn-primary" data-toggle="modal" data-target="#tag_edit_dlg" ng-click="edit_tag_onclick({{tag.idtag}}, &quot;{{tag.tagname}}&quot;)">
+                        {% set tagpage = "" %}
+                        {% if tag.tagpage %}
+                            {% set tagpage = tag.tagpage %}
+                        {% endif %}
+                        <button type="button" class="btn btn-xs btn-primary" data-toggle="modal"
+                                data-target="#tag_edit_dlg" ng-click="edit_tag_onclick({{tag.idtag}}, &quot;{{tag.tagname}}&quot;, &quot;{{tagpage}}&quot;)">
                             <span class="glyphicon glyphicon-edit"></span>&nbsp;
                         </button>
                     </td>
@@ -51,7 +61,7 @@
                         {% endif %}
                     </td>
                     <td width = "500px">
-                        {{ tag.tagname }}
+                        <p>{{ tag.tagname }} ({{ tag.tagpage }})</p>
                     </td>
                 {% endfor %}
             </tr>

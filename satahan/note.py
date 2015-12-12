@@ -6,6 +6,7 @@ from satahan import app, back
 from tag_helper import get_note_tags, get_tags_in_group, get_user_default_taggroup, get_current_user_taggroup
 from attachments import delete_all_attachments, get_all_attachments
 from admin_points import AdminPoints
+from sets import Set
 
 per_page = 10
 
@@ -74,9 +75,12 @@ def query_note():
         usersettings = UserSettings.query.filter_by(iduser=current_user.id).first()
     if usersettings and usersettings.idtaggroup_def == usertaggroup.idtaggroup:
         defaut_tag_group=True
+    tagpages = Set()
+    for tg in tags:
+        tagpages.add(tg.tagpage)
     return render_template('home.html', notes=note_items, pagination=pagination, usertaggroups = usertaggroups,\
                            tags = tags, checked_tags = q, current_user_taggroup = usertaggroup, favourite = favourite,\
-                           defaut_tag_group=defaut_tag_group, show_tag_ctrl=True)
+                           defaut_tag_group=defaut_tag_group, show_tag_ctrl=True, tagpages=sorted(tagpages))
 
 @app.route('/add_note/<int:published>', methods=['GET', 'POST'])
 @back.anchor

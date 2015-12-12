@@ -11,7 +11,7 @@ def get_note_tags(form):
     return tags.split(',')
 
 def get_tags_in_group(idtaggroup):
-    return Tag.query.filter_by(idtaggroup=idtaggroup)
+    return Tag.query.order_by(Tag.tagpage).filter_by(idtaggroup=idtaggroup)
 
 def get_user_default_taggroup():
 

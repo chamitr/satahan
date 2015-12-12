@@ -126,12 +126,14 @@ class Tag(db.Model):
     idtag = db.Column(db.Integer, primary_key=True)
     tagname = db.Column(db.String(256), nullable=False)
     idtaggroup = db.Column(db.Integer, db.ForeignKey('taggroup.idtaggroup'))
+    tagpage = db.Column(db.String(256), nullable=True)
 
     taggroup = db.relationship("TagGroup", primaryjoin="and_(Tag.idtaggroup==foreign(TagGroup.idtaggroup))" )
 
-    def __init__(self, tagname, idtaggroup):
+    def __init__(self, tagname, idtaggroup, tagpage=None):
         self.tagname = tagname
         self.idtaggroup = idtaggroup
+        self.tagpage = tagpage
 
     def is_active(self):
         return True
@@ -141,7 +143,8 @@ class Tag(db.Model):
        return {
            'idtag'          : self.idtag,
            'tagname'        : self.tagname,
-           'idtaggroup'    : self.idtaggroup
+           'idtaggroup'     : self.idtaggroup,
+           'tagpage'           : self.tagpage
        }
 
 class Comment(db.Model):

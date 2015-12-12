@@ -11,6 +11,9 @@ from admin_points import AdminPoints
 def add_tag():
     tg = request.form['tg']
     tag = request.form['tagname']
+    page = request.form['tagpage']
+    if len(page) <= 0:
+        page = None
 
     adminpoints = AdminPoints(db)
     #check admin points
@@ -25,7 +28,7 @@ def add_tag():
         return tag_manage_view(tg)
 
     taggroup = TagGroup.query.filter_by(idtaggroup=tg).first()
-    tag = Tag(tag, tg)
+    tag = Tag(tag, tg, page)
     tag.taggroup.append(taggroup)
     db.session.add(tag)
 
@@ -44,7 +47,6 @@ def tag_manage_view(tg):
     user_settings = AdminPoints.get_user_settings()
     return render_template('/manage_tags.html', tags=tgs, current_user_taggroup = current_user_taggroup,\
                            tags_in_use = tags_in_use, user_settings=user_settings)
-
 
 @app.route('/manage_tags', methods=['GET'])
 @login_required
@@ -70,6 +72,11 @@ def edit_tag():
         return ('', 500)
 
     tag.tagname = json_args['edit_tagname']
+    page = json_args['edit_tagpage']
+    if len(page) > 0:
+        tag.tagpage = page
+    else:
+        tag.tagpage = None
 
     #reduce admin points
     adminpoints.change_admin_points(-1)
