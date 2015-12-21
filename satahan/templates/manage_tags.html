@@ -31,11 +31,11 @@
     <form action="{{ url_for('add_tag') }}" method=post>
         <input type="input" name="tg" value={{current_user_taggroup.idtaggroup}} hidden>
         <p>Tag name:</p>
-        <input type="input" name="tagname">
+        <input type="input" name="tagname" maxlength="75">
         <input class = "btn btn-primary" type=submit value="Add tag">
         <p></p>
         <p>Tag page (optional):</p>
-        <input type="input" name="tagpage">
+        <input type="input" name="tagpage" maxlength="75">
     </form>
     <p></p>
     <form action="" method=post>

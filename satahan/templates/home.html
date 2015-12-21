@@ -20,7 +20,7 @@
         <input type="input" name="taggroupname" style="color:black;"  maxlength="75">
         <button class="btn btn-primary" type="submit" formaction="{{ url_for('move_tags') }}">Move tags to group</button>
         <p></p>
-        <input type="input" name="tagname" style="color:black;">
+        <input type="input" name="tagname" style="color:black;" maxlength="75">
         <button class="btn btn-primary" type="submit" formaction="{{ url_for('merge_tags') }}">Merge tags to target</button>
     {% endif %}
 {% endblock %}
