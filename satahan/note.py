@@ -47,7 +47,8 @@ def query_note():
     tags = get_tags_in_group(usertaggroup.idtaggroup)
 
     #get resulting notes
-    notes = None
+    note_total = 0
+    note_items = []
     get_all_notes_in_tag_grop = True;
     if q:
         #query specified
@@ -56,12 +57,11 @@ def query_note():
             notes = Note.query.order_by(Note.idnote.desc())\
                 .filter(Note.tags.any(Tag.idtag.in_(q)),Note.published == True)\
                 .paginate(page, per_page, False)
+            note_total = notes.total
+            note_items = notes.items
             get_all_notes_in_tag_grop = False
         except:
             pass
-
-    note_total = 0
-    note_items = []
 
     if get_all_notes_in_tag_grop and usertaggroup:
         #  get total count
