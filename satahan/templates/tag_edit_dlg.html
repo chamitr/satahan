@@ -11,10 +11,10 @@
         <div class="modal-body">
             <p>Tag name:</p>
             <div ng-model="edit_idtag"></div>
-            <input type=text size=75 ng-model = "edit_tagname">
+            <input type=text size=55 ng-model = "edit_tagname" maxlength="75">
             <p></p>
             <p>Tag page (optional):</p>
-            <input type=text size=75 ng-model = "edit_tagpage">
+            <input type=text size=55 ng-model = "edit_tagpage" maxlength="75">
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" ng-click="tag_edit_ok_btn(edit_idtag, edit_tagname, edit_tagpage)">Ok</button>
