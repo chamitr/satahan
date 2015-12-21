@@ -3,7 +3,7 @@
 {% block main %}
 
     <form action="">
-        <input type="input" name="taggroupname">
+        <input type="input" name="taggroupname"  maxlength="75">
         <input formmethod=get formaction="{{ url_for('view_group') }}" class = "btn btn-primary" type=submit value="Search">
     </form>
     <p></p>

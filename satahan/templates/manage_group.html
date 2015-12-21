@@ -25,7 +25,7 @@
     </div>
 
     <form action="">
-        <input type="input" name="taggroupname">
+        <input type="input" name="taggroupname" maxlength="75">
         <input type="input" name="f" value={{ f }} hidden>
         <input formmethod=post formaction="{{ url_for('add_group') }}" class = "btn btn-primary" type=submit value="Add group">
         <input formmethod=get formaction="{{ url_for('manage_group') }}" class = "btn btn-primary" type=submit value="Search">
