@@ -2,12 +2,12 @@ __author__ = 'Chamit'
 
 from flask import request, render_template, flash, json, redirect
 from flask_user import login_required, current_user
-from model import db, TagGroup, usertaggroups, UserSettings, Tag, tags
+from model import db, TagGroup, usertaggroups, UserSettings, Tag, notetags
 from satahan import app, back
 from admin_points import AdminPoints
 
 def get_taggroups_in_use():
-    taggroups_in_use = Tag.query.filter(Tag.idtag.in_(db.session.query(tags.c.idtag))).all()
+    taggroups_in_use = Tag.query.filter(Tag.idtag.in_(db.session.query(notetags.c.idtag))).all()
     return [usertag.idtaggroup for usertag in taggroups_in_use]
 
 def get_manage_group_view(s=None):

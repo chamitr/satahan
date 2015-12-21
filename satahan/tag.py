@@ -2,7 +2,7 @@ __author__ = 'Chamit'
 
 from flask import request, jsonify, json, flash, render_template, redirect
 from flask_user import login_required, current_user
-from model import db, Tag, TagGroup, UserSettings, tags
+from model import db, Tag, TagGroup, UserSettings, notetags
 from satahan import app, back
 from admin_points import AdminPoints
 
@@ -42,7 +42,7 @@ def add_tag():
 def tag_manage_view(tg):
     current_user_taggroup = TagGroup.query.filter_by(idtaggroup=tg).first()
     tgs = Tag.query.filter_by(idtaggroup=tg).all()
-    tags_in_use = db.session.query(tags.c.idtag).filter(tags.c.idtag.in_(t.idtag for t in tgs)).all()
+    tags_in_use = db.session.query(notetags.c.idtag).filter(notetags.c.idtag.in_(t.idtag for t in tgs)).all()
     tags_in_use = [t[0] for t in tags_in_use]
     user_settings = AdminPoints.get_user_settings()
     return render_template('/manage_tags.html', tags=tgs, current_user_taggroup = current_user_taggroup,\
@@ -160,7 +160,7 @@ def merge_tags():
         tag_query = Tag.query.filter_by(tagname=tag, idtaggroup=tg).first()
 
     tgs = request.args.getlist('t')
-    stmt = tags.update().where(tags.c.idtag.in_(tgs)).values(idtag=tag_query.idtag)
+    stmt = notetags.update().where(notetags.c.idtag.in_(tgs)).values(idtag=tag_query.idtag)
     db.session.execute(stmt)
     db.session.commit()
     flash('Tags successfully merged. Delete unused tags', 'success')

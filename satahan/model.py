@@ -4,7 +4,7 @@ from werkzeug import generate_password_hash, check_password_hash
 import datetime
 
 db = SQLAlchemy()
-tags = db.Table('notetag',
+notetags = db.Table('notetag',
     db.Column('idtag', db.Integer, db.ForeignKey('tag.idtag')),
     db.Column('idnote', db.Integer, db.ForeignKey('note.idnote'))
 )
@@ -67,7 +67,7 @@ class Note(db.Model):
     published = db.Column(db.Boolean, nullable=False, default=False)
     attachment_count = db.Column(db.Integer, nullable=False, default=0)
 
-    tags = db.relationship('Tag', secondary=tags, backref='note', lazy='dynamic')
+    tags = db.relationship('Tag', secondary=notetags, backref='note', lazy='dynamic')
     user = db.relationship("User", primaryjoin="and_(Note.iduser==foreign(User.id))" )
 
     def __init__(self, title, text, iduser, published):
