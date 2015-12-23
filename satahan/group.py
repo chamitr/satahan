@@ -5,6 +5,7 @@ from flask_user import login_required, current_user
 from model import db, TagGroup, usertaggroups, UserSettings, Tag, notetags
 from satahan import app, back
 from admin_points import AdminPoints
+from sqlalchemy import delete, and_
 
 def get_taggroups_in_use():
     taggroups_in_use = Tag.query.filter(Tag.idtag.in_(db.session.query(notetags.c.idtag))).all()
@@ -126,6 +127,12 @@ def delete_group(idtaggroup):
     if idtaggroup in get_taggroups_in_use():
         flash("Group is in use.", "error")
         return back.go_back()
+
+    if tg in current_user.usertaggroups:
+        #if tag group is in current user's favourites, remove it before deleting it.
+        stmt = delete(usertaggroups).where(and_(usertaggroups.c.iduser==current_user.id,
+                                                      usertaggroups.c.idtaggroup==idtaggroup))
+        db.session.execute(stmt)
 
     tg_query.delete()
 
