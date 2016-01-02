@@ -6,8 +6,9 @@ from werkzeug import secure_filename
 from flask.ext.uploads import UploadSet, configure_uploads
 from flask_user import login_required, current_user
 import os
-from model import db, Tag, TagGroup, Note
+from model import Tag, TagGroup, Note
 import codecs
+from database import db_session
 
 @app.route('/upload_notes/<int:idtaggroup>', methods=['POST'])
 @login_required
@@ -48,7 +49,7 @@ def upload_notes(idtaggroup):
 
             #add note
             newnote = Note(note_title, note_text, current_user.id, True)
-            db.session.add(newnote)
+            db_session.add(newnote)
 
             #add tags
             for note_tag in note_tags:
@@ -59,13 +60,13 @@ def upload_notes(idtaggroup):
                 else:
                     tag = Tag(note_tag, idtaggroup)
                     tag.taggroup.append(taggroup)
-                    db.session.add(tag)
+                    db_session.add(tag)
                 newnote.tags.append(tag)
                 if not dbdirty:
                     dbdirty = True
 
     if dbdirty:
-        db.session.commit()
+        db_session.commit()
 
     f.close()
 

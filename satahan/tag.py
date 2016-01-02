@@ -2,9 +2,10 @@ __author__ = 'Chamit'
 
 from flask import request, jsonify, json, flash, render_template, redirect
 from flask_user import login_required, current_user
-from model import db, Tag, TagGroup, UserSettings, notetags
+from model import Tag, TagGroup, UserSettings, notetags
 from satahan import app, back
 from admin_points import AdminPoints
+from database import db_session
 
 @app.route('/add_tag', methods=['GET', 'POST'])
 @login_required
@@ -15,7 +16,7 @@ def add_tag():
     if len(page) <= 0:
         page = None
 
-    adminpoints = AdminPoints(db)
+    adminpoints = AdminPoints(db_session)
     #check admin points
     if not adminpoints.is_enough_admin_points(1):
         flash("Not enough admin points.", "error")
@@ -30,19 +31,19 @@ def add_tag():
     taggroup = TagGroup.query.filter_by(idtaggroup=tg).first()
     tag = Tag(tag, tg, page)
     tag.taggroup.append(taggroup)
-    db.session.add(tag)
+    db_session.add(tag)
 
     #reduce admin points
     adminpoints.change_admin_points(-1)
 
-    db.session.commit()
+    db_session.commit()
     flash('Tag successfully added to group.', 'success')
     return tag_manage_view(tg)
 
 def tag_manage_view(tg):
     current_user_taggroup = TagGroup.query.filter_by(idtaggroup=tg).first()
     tgs = Tag.query.filter_by(idtaggroup=tg).all()
-    tags_in_use = db.session.query(notetags.c.idtag).filter(notetags.c.idtag.in_(t.idtag for t in tgs)).all()
+    tags_in_use = db_session.query(notetags.c.idtag).filter(notetags.c.idtag.in_(t.idtag for t in tgs)).all()
     tags_in_use = [t[0] for t in tags_in_use]
     user_settings = AdminPoints.get_user_settings()
     return render_template('/manage_tags.html', tags=tgs, current_user_taggroup = current_user_taggroup,\
@@ -59,7 +60,7 @@ def manage_tags():
 @app.route('/edit_tag', methods=['GET', 'POST'])
 @login_required
 def edit_tag():
-    adminpoints = AdminPoints(db)
+    adminpoints = AdminPoints(db_session)
     #check admin points
     if not adminpoints.is_enough_admin_points(1):
         flash("Not enough admin points.", "error")
@@ -81,14 +82,14 @@ def edit_tag():
     #reduce admin points
     adminpoints.change_admin_points(-1)
 
-    db.session.commit()
+    db_session.commit()
 
     return ('', 204)
 
 @app.route('/delete_tag/<int:idtaggroup>/<int:idtag>', methods=['GET', 'POST'])
 @login_required
 def delete_tag(idtaggroup, idtag):
-    adminpoints = AdminPoints(db)
+    adminpoints = AdminPoints(db_session)
     #check admin points
     if not adminpoints.is_enough_admin_points(1):
         flash("Not enough admin points.", "error")
@@ -103,7 +104,7 @@ def delete_tag(idtaggroup, idtag):
     #reduce admin points
     adminpoints.change_admin_points(-1)
 
-    db.session.commit()
+    db_session.commit()
     flash('Tag successfully deleted from group.', 'success')
     return tag_manage_view(idtaggroup)
 
@@ -122,15 +123,15 @@ def move_tags():
     tag_group = TagGroup.query.filter_by(taggroupname=tag_group_name).first()
     if not tag_group:
         tag_group = TagGroup(tag_group_name)
-        db.session.add(tag_group)
+        db_session.add(tag_group)
         current_user.usertaggroups.append(tag_group)
-        db.session.commit()
+        db_session.commit()
         tag_group = TagGroup.query.filter_by(taggroupname=tag_group_name).first()
 
     tags = request.args.getlist('t')
     stmt = Tag.__table__.update().where(Tag.idtag.in_(tags)).values(idtaggroup=tag_group.idtaggroup)
-    db.session.execute(stmt)
-    db.session.commit()
+    db_session.execute(stmt)
+    db_session.commit()
     flash('Tags successfully moved.', 'success')
 
     return back.goback()
@@ -155,14 +156,14 @@ def merge_tags():
         taggroup = TagGroup.query.filter_by(idtaggroup=tg).first()
         tag = Tag(tag_name, tg)
         tag.taggroup.append(taggroup)
-        db.session.add(tag)
-        db.session.commit()
+        db_session.add(tag)
+        db_session.commit()
         tag_query = Tag.query.filter_by(tagname=tag, idtaggroup=tg).first()
 
     tgs = request.args.getlist('t')
     stmt = notetags.update().where(notetags.c.idtag.in_(tgs)).values(idtag=tag_query.idtag)
-    db.session.execute(stmt)
-    db.session.commit()
+    db_session.execute(stmt)
+    db_session.commit()
     flash('Tags successfully merged. Delete unused tags', 'success')
 
     return back.goback()

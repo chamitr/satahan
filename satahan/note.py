@@ -1,6 +1,6 @@
 from flask import request, session, redirect, render_template, flash
 from flask_user import login_required, current_user
-from model import Note, Tag, Comment, notetags, TagGroup, db, usertaggroups, UserSettings, Attachment
+from model import Note, Tag, Comment, notetags, TagGroup, usertaggroups, UserSettings, Attachment
 from flask.ext.paginate import Pagination
 from satahan import app, back
 from tag_helper import get_note_tags, get_tags_in_group, get_user_default_taggroup, get_current_user_taggroup
@@ -8,16 +8,17 @@ from attachments import delete_all_attachments, get_all_attachments
 from admin_points import AdminPoints
 from sets import Set
 from sqlalchemy import and_, select, union
+from database import db_session
 
 per_page = 10
 
-def get_notes_in_group_stmt(returned_fields, idtaggroup):
+def get_notes_in_group_stmt(returned_fields, idtaggroup,where_clause):
     s1 = select([returned_fields]).select_from(Note.__table__.outerjoin(notetags, notetags.c.idnote==Note.__table__.c.idnote)\
         .outerjoin(Tag.__table__, notetags.c.idtag==Tag.__table__.c.idtag))\
-        .where(and_(Tag.idtaggroup==idtaggroup, Note.published==True))
+        .where(where_clause)
     s2 = select([returned_fields]).select_from(notetags.outerjoin(Note.__table__, notetags.c.idnote==Note.__table__.c.idnote)\
         .outerjoin(Tag.__table__, notetags.c.idtag==Tag.__table__.c.idtag))\
-        .where(and_(Tag.idtaggroup==idtaggroup, Note.published==True))
+        .where(where_clause)
     return union(s1,s2)
 
 @app.route('/')
@@ -54,24 +55,30 @@ def query_note():
         #query specified
         try:
             #try filter
-            notes = Note.query.order_by(Note.idnote.desc())\
-                .filter(Note.tags.any(Tag.idtag.in_(q)),Note.published == True)\
-                .paginate(page, per_page, False)
-            note_total = notes.total
-            note_items = notes.items
+            where_clause = and_(Tag.idtag.in_(q), Note.published==True)
+            #  get total count
+            stmt = get_notes_in_group_stmt(Note.idnote, usertaggroup.idtaggroup, where_clause)
+            note_total = len(db_session.execute(stmt).fetchall())
+            #  get data
+            stmt = get_notes_in_group_stmt(Note, usertaggroup.idtaggroup, where_clause)
+            stmt = stmt.offset((page-1)*per_page)\
+                    .limit(per_page)
+            note_items = db_session.execute(stmt).fetchall()
+
             get_all_notes_in_tag_grop = False
         except:
             pass
 
     if get_all_notes_in_tag_grop and usertaggroup:
+        where_clause = and_(Tag.idtaggroup==idtaggroup, Note.published==True)
         #  get total count
-        stmt = get_notes_in_group_stmt(Note.idnote, usertaggroup.idtaggroup)
-        note_total = len(db.session.execute(stmt).fetchall())
+        stmt = get_notes_in_group_stmt(Note.idnote, usertaggroup.idtaggroup, where_clause)
+        note_total = len(db_session.execute(stmt).fetchall())
         #  get data
-        stmt = get_notes_in_group_stmt(Note, usertaggroup.idtaggroup)
+        stmt = get_notes_in_group_stmt(Note, usertaggroup.idtaggroup, where_clause)
         stmt = stmt.offset((page-1)*per_page)\
                 .limit(per_page)
-        note_items = db.session.execute(stmt).fetchall()
+        note_items = db_session.execute(stmt).fetchall()
 
     pagination = Pagination(page=page, total=note_total, record_name='note', per_page = per_page,\
                             css_framework='foundation')
@@ -149,7 +156,7 @@ def add_note(published):
         return render_template('add_note.html', new_note = newnote, tags = tagsingroup,\
                 usertaggroups = current_user.usertaggroups, current_user_taggroup = usertaggroup, show_tag_ctrl=True)
     #add note to db
-    db.session.add(newnote)
+    db_session.add(newnote)
     #link tags to note
     if tags:
         tags = Tag.query.filter(Tag.idtag.in_(tags)).all()
@@ -157,11 +164,11 @@ def add_note(published):
             newnote.tags.append(tag)
     #add admin points
     if published == 1:
-        adminpoints = AdminPoints(db)
+        adminpoints = AdminPoints(db_session)
         adminpoints.change_admin_points(10)
 
     #commit to db
-    db.session.commit()
+    db_session.commit()
     if published == 1:
         flash('New note was successfully posted', 'success')
         return redirect('/get_note/' + str(newnote.idnote))
@@ -202,7 +209,7 @@ def delete_note(idnote):
     Comment.query.filter_by(idnote=idnote).delete()
     note_query.tags = []
     Note.query.filter_by(idnote=idnote).delete()
-    db.session.commit()
+    db_session.commit()
     return redirect('/')
 
 @app.route('/edit_note/<int:idnote>', methods=['GET', 'POST'])
@@ -254,7 +261,7 @@ def edit_note(idnote):
 
         note_query.title=request.form['title']
         note_query.text=request.form['notetext']
-        db.session.commit()
+        db_session.commit()
         return redirect('/')
 
 @app.route('/delete_draft', methods=['POST'])
@@ -266,7 +273,7 @@ def delete_draft():
         delete_all_attachments(idnote=draft_note.idnote)
         draft_note.tags = []
         draft_note_query.delete()
-        db.session.commit()
+        db_session.commit()
     return redirect('/add_note/0')
 
 @app.route('/about', methods=['GET'])

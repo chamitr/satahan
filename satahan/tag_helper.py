@@ -2,7 +2,7 @@ __author__ = 'Chamit'
 
 from flask import request
 from flask_user import current_user
-from model import db, usertaggroups, TagGroup, Tag, UserSettings
+from model import usertaggroups, TagGroup, Tag, UserSettings
 
 def get_note_tags(form):
     tags = request.form['note_tags']

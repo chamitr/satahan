@@ -2,30 +2,32 @@ from flask_user import UserMixin
 from flask.ext.sqlalchemy import SQLAlchemy
 from werkzeug import generate_password_hash, check_password_hash
 import datetime
+from database import Base
+from sqlalchemy import create_engine, Column, Integer, String, ForeignKey, Table, DateTime, Boolean
+from sqlalchemy.orm import relationship
 
-db = SQLAlchemy()
-notetags = db.Table('notetag',
-    db.Column('idtag', db.Integer, db.ForeignKey('tag.idtag')),
-    db.Column('idnote', db.Integer, db.ForeignKey('note.idnote'))
+notetags = Table('notetag', Base.metadata,
+    Column('idtag', Integer, ForeignKey('tag.idtag')),
+    Column('idnote', Integer, ForeignKey('note.idnote'))
 )
 
-usertaggroups = db.Table('usertaggroup',
-    db.Column('iduser', db.Integer, db.ForeignKey('user.id')),
-    db.Column('idtaggroup', db.Integer, db.ForeignKey('taggroup.idtaggroup')),
+usertaggroups = Table('usertaggroup', Base.metadata,
+    Column('iduser', Integer, ForeignKey('user.id')),
+    Column('idtaggroup', Integer, ForeignKey('taggroup.idtaggroup')),
 )
 
 # Define User model. Make sure to add flask.ext.user UserMixin !!!
-class User(db.Model, UserMixin):
+class User(Base, UserMixin):
     __tablename__ = 'user'
 
-    id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(50), nullable=False, default='')
-    email = db.Column(db.String(120), nullable=False, unique=True)
-    password = db.Column(db.String(60), nullable=False, default='')
-    active = db.Column(db.Boolean(), nullable=False, server_default='0')
-    confirmed_at = db.Column(db.DateTime())
-    is_admin = db.Column(db.Boolean(), nullable=False, server_default='0')
-    usertaggroups = db.relationship('TagGroup', secondary=usertaggroups, backref='user', lazy='dynamic')
+    id = Column(Integer, primary_key=True)
+    username = Column(String(50), nullable=False, default='')
+    email = Column(String(120), nullable=False, unique=True)
+    password = Column(String(60), nullable=False, default='')
+    active = Column(Boolean(), nullable=False, server_default='0')
+    confirmed_at = Column(DateTime())
+    is_admin = Column(Boolean(), nullable=False, server_default='0')
+    usertaggroups = relationship('TagGroup', secondary=usertaggroups, backref='user', lazy='dynamic')
 
     @property
     def serialize(self):
@@ -39,14 +41,14 @@ class User(db.Model, UserMixin):
            'is_admin'           : self.is_admin
        }
 
-class UserSettings(db.Model):
+class UserSettings(Base):
     __tablename__ = 'usersettings'
 
-    iduser = db.Column(db.Integer, primary_key=True)
-    idtaggroup_def = db.Column(db.Integer, nullable=True)
-    admin_points = db.Column(db.Integer, nullable=False, default=10)
+    iduser = Column(Integer, primary_key=True)
+    idtaggroup_def = Column(Integer, nullable=True)
+    admin_points = Column(Integer, nullable=False, default=10)
 
-    user = db.relationship("User", primaryjoin="and_(UserSettings.iduser==foreign(User.id))" )
+    user = relationship("User", primaryjoin="and_(UserSettings.iduser==foreign(User.id))" )
 
     def __init__(self, iduser):
         self.iduser = iduser
@@ -55,20 +57,20 @@ class UserSettings(db.Model):
     def is_active(self):
         return True
 
-class Note(db.Model):
+class Note(Base):
     __tablename__ = 'note'
 
-    idnote = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(256), nullable=False, default='')
-    text = db.Column(db.String(65535), nullable=False, default='')
-    iduser = db.Column(db.Integer, db.ForeignKey('user.id'))
-    comments_count = db.Column(db.Integer, nullable=False, default=0)
-    createdatetime = db.Column(db.DateTime, nullable=False, default=datetime.datetime.utcnow)
-    published = db.Column(db.Boolean, nullable=False, default=False)
-    attachment_count = db.Column(db.Integer, nullable=False, default=0)
+    idnote = Column(Integer, primary_key=True)
+    title = Column(String(256), nullable=False, default='')
+    text = Column(String(65535), nullable=False, default='')
+    iduser = Column(Integer, ForeignKey('user.id'))
+    comments_count = Column(Integer, nullable=False, default=0)
+    createdatetime = Column(DateTime, nullable=False, default=datetime.datetime.utcnow)
+    published = Column(Boolean, nullable=False, default=False)
+    attachment_count = Column(Integer, nullable=False, default=0)
 
-    tags = db.relationship('Tag', secondary=notetags, backref='note', lazy='dynamic')
-    user = db.relationship("User", primaryjoin="and_(Note.iduser==foreign(User.id))" )
+    tags = relationship('Tag', secondary=notetags, backref='note', lazy='dynamic')
+    user = relationship("User", primaryjoin="and_(Note.iduser==foreign(User.id))" )
 
     def __init__(self, title, text, iduser, published):
         self.title = title
@@ -102,13 +104,13 @@ class Note(db.Model):
     def serialize_user(self):
         return [ item.serialize for item in self.user]
 
-class TagGroup(db.Model):
+class TagGroup(Base):
     __tablename__ = 'taggroup'
 
-    idtaggroup = db.Column(db.Integer, primary_key=True)
-    taggroupname = db.Column(db.String(256), nullable=False)
+    idtaggroup = Column(Integer, primary_key=True)
+    taggroupname = Column(String(256), nullable=False)
 
-    tags = db.relationship("Tag", primaryjoin="and_(Tag.idtaggroup==foreign(TagGroup.idtaggroup))" )
+    tags = relationship("Tag", primaryjoin="and_(Tag.idtaggroup==foreign(TagGroup.idtaggroup))" )
 
     def __init__(self, taggroupname):
         self.taggroupname = taggroupname
@@ -120,15 +122,15 @@ class TagGroup(db.Model):
            'taggroupname'        : self.taggroupname,
        }
 
-class Tag(db.Model):
+class Tag(Base):
     __tablename__ = 'tag'
 
-    idtag = db.Column(db.Integer, primary_key=True)
-    tagname = db.Column(db.String(256), nullable=False)
-    idtaggroup = db.Column(db.Integer, db.ForeignKey('taggroup.idtaggroup'))
-    tagpage = db.Column(db.String(256), nullable=True)
+    idtag = Column(Integer, primary_key=True)
+    tagname = Column(String(256), nullable=False)
+    idtaggroup = Column(Integer, ForeignKey('taggroup.idtaggroup'))
+    tagpage = Column(String(256), nullable=True)
 
-    taggroup = db.relationship("TagGroup", primaryjoin="and_(Tag.idtaggroup==foreign(TagGroup.idtaggroup))" )
+    taggroup = relationship("TagGroup", primaryjoin="and_(Tag.idtaggroup==foreign(TagGroup.idtaggroup))" )
 
     def __init__(self, tagname, idtaggroup, tagpage=None):
         self.tagname = tagname
@@ -147,16 +149,16 @@ class Tag(db.Model):
            'tagpage'           : self.tagpage
        }
 
-class Comment(db.Model):
+class Comment(Base):
     __tablename__ = 'comment'
 
-    idcomment = db.Column(db.Integer, primary_key=True)
-    text = db.Column(db.String(65535), nullable=False, default='')
-    iduser = db.Column(db.Integer, db.ForeignKey('user.id'))
-    createdatetime = db.Column(db.DateTime, nullable=False, default=datetime.datetime.utcnow)
-    idnote = db.Column(db.Integer, db.ForeignKey('note.idnote'))
+    idcomment = Column(Integer, primary_key=True)
+    text = Column(String(65535), nullable=False, default='')
+    iduser = Column(Integer, ForeignKey('user.id'))
+    createdatetime = Column(DateTime, nullable=False, default=datetime.datetime.utcnow)
+    idnote = Column(Integer, ForeignKey('note.idnote'))
 
-    user = db.relationship("User", primaryjoin="and_(Comment.iduser==foreign(User.id))" )
+    user = relationship("User", primaryjoin="and_(Comment.iduser==foreign(User.id))" )
 
     def __init__(self, text, iduser, idnote):
         self.text = text
@@ -181,12 +183,12 @@ class Comment(db.Model):
     def serialize_user(self):
         return [ item.serialize for item in self.user]
 
-class Attachment(db.Model):
+class Attachment(Base):
     __tablename__ = 'attachment'
 
-    idattachment = db.Column(db.Integer, primary_key=True)
-    idnote = db.Column(db.Integer, db.ForeignKey('note.idnote'))
-    filename = db.Column(db.String(256), nullable=False)
+    idattachment = Column(Integer, primary_key=True)
+    idnote = Column(Integer, ForeignKey('note.idnote'))
+    filename = Column(String(256), nullable=False)
 
     def __init__(self, idnote, filename):
         self.idnote = idnote
