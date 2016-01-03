@@ -1,6 +1,4 @@
 from flask_user import UserMixin
-from flask.ext.sqlalchemy import SQLAlchemy
-from werkzeug import generate_password_hash, check_password_hash
 import datetime
 from database import Base
 from sqlalchemy import create_engine, Column, Integer, String, ForeignKey, Table, DateTime, Boolean
