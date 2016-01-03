@@ -51,7 +51,7 @@ def query_note():
     note_total = 0
     note_items = []
     get_all_notes_in_tag_grop = True;
-    if q:
+    if q and len(q) > 0:
         #query specified
         try:
             #try filter
