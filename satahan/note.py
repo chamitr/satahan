@@ -50,35 +50,20 @@ def query_note():
     #get resulting notes
     note_total = 0
     note_items = []
-    get_all_notes_in_tag_grop = True;
     if q and len(q) > 0:
-        #query specified
-        try:
-            #try filter
-            where_clause = and_(Tag.idtag.in_(q), Note.published==True)
-            #  get total count
-            stmt = get_notes_in_group_stmt(Note.idnote, usertaggroup.idtaggroup, where_clause)
-            note_total = len(db_session.execute(stmt).fetchall())
-            #  get data
-            stmt = get_notes_in_group_stmt(Note, usertaggroup.idtaggroup, where_clause)
-            stmt = stmt.offset((page-1)*per_page)\
-                    .limit(per_page)
-            note_items = db_session.execute(stmt).fetchall()
-
-            get_all_notes_in_tag_grop = False
-        except:
-            pass
-
-    if get_all_notes_in_tag_grop and usertaggroup:
+        #try filter
+        where_clause = and_(Tag.idtag.in_(q), Note.published==True)
+    elif usertaggroup:
         where_clause = and_(Tag.idtaggroup==usertaggroup.idtaggroup, Note.published==True)
-        #  get total count
-        stmt = get_notes_in_group_stmt(Note.idnote, usertaggroup.idtaggroup, where_clause)
-        note_total = len(db_session.execute(stmt).fetchall())
-        #  get data
-        stmt = get_notes_in_group_stmt(Note, usertaggroup.idtaggroup, where_clause)
-        stmt = stmt.offset((page-1)*per_page)\
-                .limit(per_page)
-        note_items = db_session.execute(stmt).fetchall()
+
+    #  get total count
+    stmt = get_notes_in_group_stmt(Note.idnote, usertaggroup.idtaggroup, where_clause)
+    note_total = len(db_session.execute(stmt).fetchall())
+    #  get data
+    stmt = get_notes_in_group_stmt(Note, usertaggroup.idtaggroup, where_clause)
+    stmt = stmt.offset((page-1)*per_page)\
+            .limit(per_page)
+    note_items = db_session.execute(stmt).fetchall()
 
     pagination = Pagination(page=page, total=note_total, record_name='note', per_page = per_page,\
                             css_framework='foundation')
