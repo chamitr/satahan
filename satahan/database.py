@@ -5,7 +5,7 @@ from sqlalchemy.orm import scoped_session, sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 from configclass import ConfigClass
 
-engine = create_engine(ConfigClass.SQLALCHEMY_DATABASE_URI+'?charset=utf8', convert_unicode=True, pool_recycle=3600)
+engine = create_engine(ConfigClass.SQLALCHEMY_DATABASE_URI+'?charset=utf8', convert_unicode=True, pool_recycle=10)
 db_session = scoped_session(sessionmaker(autocommit=False,
                                          autoflush=False,
                                          bind=engine))
