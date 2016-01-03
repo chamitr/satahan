@@ -70,7 +70,7 @@ def query_note():
             pass
 
     if get_all_notes_in_tag_grop and usertaggroup:
-        where_clause = and_(Tag.idtaggroup==idtaggroup, Note.published==True)
+        where_clause = and_(Tag.idtaggroup==usertaggroup.idtaggroup, Note.published==True)
         #  get total count
         stmt = get_notes_in_group_stmt(Note.idnote, usertaggroup.idtaggroup, where_clause)
         note_total = len(db_session.execute(stmt).fetchall())
