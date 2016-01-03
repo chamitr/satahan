@@ -6,7 +6,7 @@ from flask_user import SQLAlchemyAdapter, UserManager
 from flask.ext.triangle import Triangle
 from model import User
 from configclass import ConfigClass
-from database import init_db, db_session
+from database import init_db, db_session, engine
 
 app = Flask(__name__)
 
@@ -17,7 +17,7 @@ mail = Mail(app)
 init_db()
 
 # Setup Flask-User
-db_adapter = SQLAlchemyAdapter(db_session, User)        # Register the User model
+db_adapter = SQLAlchemyAdapter(engine, User)        # Register the User model
 user_manager = UserManager(db_adapter, app)     # Initialize Flask-User
 
 app.secret_key = 'haha'
