@@ -23,7 +23,7 @@ def download(idnote, filename):
 def upload(idnote):
     """Upload a new file."""
     if request.method == 'POST':
-        note = Note.query.filter_by(idnote=idnote, published = True).first()
+        note = Note.query.filter_by(idnote=idnote).first()
         if not note:
             flash('Note could not be found.', 'error')
             return back.goback()
