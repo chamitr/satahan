@@ -35,12 +35,13 @@
         <p></p>
         <p><span class="glyphicon glyphicon-info-sign"></span> All contents are public with global visibility except drafts.</p>
         <dd><input formaction= "{{ url_for('add_note', published=0) }}" class = "btn btn-primary" type=submit value="Save draft">
-          <input formaction= "{{ url_for('delete_draft') }}" class = "btn btn-primary" type=submit value="Delete draft">
+          <input formaction= "{{ url_for('delete_draft') }}" class = "btn btn-primary" type=submit value="Cancel/Delete draft">
           <input formaction= "{{ url_for('add_note', published=1) }}" class = "btn btn-primary" type=submit value=Share>
         <dd><input type="text" name="note_tags" hidden>
       </dl>
     </form>
-    {% if new_note and new_note.idnote > 0 %}
+    <input type="text" id="noteid" value="{{ new_note.idnote }}" hidden>
+    {% if new_note %}
         {% set idnote=new_note.idnote %}
         {% include 'manage_attachments.html' %}
     {% endif %}

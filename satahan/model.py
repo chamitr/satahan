@@ -70,7 +70,9 @@ class Note(Base):
     tags = relationship('Tag', secondary=notetags, backref='note', lazy='dynamic')
     user = relationship("User", primaryjoin="and_(Note.iduser==foreign(User.id))" )
 
-    def __init__(self, title, text, iduser, published):
+    def __init__(self, title, text, iduser, published, idnote=None):
+        if idnote:
+            self.idnote = idnote
         self.title = title
         self.text = text
         self.iduser = iduser

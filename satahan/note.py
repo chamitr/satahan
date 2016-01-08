@@ -7,7 +7,7 @@ from tag_helper import get_note_tags, get_tags_in_group, get_user_default_taggro
 from attachments import delete_all_attachments, get_all_attachments
 from admin_points import AdminPoints
 from sets import Set
-from sqlalchemy import and_, select, union
+from sqlalchemy import and_, select, union, func
 from database import db_session
 
 per_page = 10
@@ -116,20 +116,23 @@ def add_note(published):
                 usertaggroups = current_user.usertaggroups, current_user_taggroup = usertaggroup,\
                                    checked_tags = checked_tags, attachments = attachments, show_tag_ctrl=True)
         else:
-            return render_template('add_note.html', tags = tagsingroup, usertaggroups = current_user.usertaggroups,\
+            idnote_next = db_session.query(func.max(Note.idnote)).first()[0] + 1
+            #create new empty draft note
+            draft_note = Note("", "", current_user.id, False, idnote=idnote_next)
+            db_session.add(draft_note)
+            db_session.commit()
+            return render_template('add_note.html', new_note = draft_note, tags = tagsingroup,\
+                                   usertaggroups = current_user.usertaggroups,\
                                    current_user_taggroup = usertaggroup, show_tag_ctrl=True)
-    #if draft found, update it
+    #if draft found, update it - we should always find it because we create empty one in get section
     newnote = Note.query.filter_by(iduser=current_user.id, published=False).first()
     if newnote:
         newnote.title = request.form['title']
         newnote.text = request.form['notetext']
         newnote.published = published
         newnote.tags = []
-    else:
-        #create new note
-        newnote = Note(request.form['title'], request.form['notetext'], current_user.id, published)
 
-    if (newnote.title == "" and newnote.text == ""):
+    if newnote.title == "" and newnote.text == "" and published == 1:
         flash('There is nothing to publish.', 'error')
         return back.go_back()
 

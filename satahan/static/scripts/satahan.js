@@ -1,9 +1,12 @@
 //JavaScript
 function init_ckeditor() {
     var notetext = document.getElementById('notetext');
+    var noteid = document.getElementById('noteid');
     if (notetext != null)
     {
-        CKEDITOR.replace( 'notetext' );
+        CKEDITOR.replace( 'notetext', {
+        filebrowserImageUploadUrl: '/uploadimage/' + noteid.value + "/"
+        });
     }
 }
 

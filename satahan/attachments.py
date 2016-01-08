@@ -1,6 +1,6 @@
 __author__ = 'Chamit'
 
-from flask import request, render_template, redirect, send_from_directory, flash
+from flask import request, render_template, redirect, send_from_directory, flash, jsonify, send_file, make_response, url_for
 from satahan import app, back
 from flask.ext.uploads import UploadSet, configure_uploads, AllExcept
 from model import Note, Attachment
@@ -9,6 +9,62 @@ from werkzeug import secure_filename
 import os
 from configclass import ConfigClass
 from database import db_session
+
+@login_required
+def upload_file(idnote, filename):
+    note = Note.query.filter_by(idnote=idnote).first()
+    if not note:
+        return False, 'Note could not be found.'
+
+    if not secure_filename(filename.filename):
+        return False, 'File name is not secure.'
+
+    attachment = Attachment.query.filter_by(idnote=idnote,filename=filename.filename).first()
+    if attachment:
+        return False, 'Attachment already exists.'
+
+    try:
+        attachments = UploadSet(str(idnote), AllExcept(('exe', 'so', 'dll')))
+        configure_uploads(app, (attachments))
+
+        filename = attachments.save(filename)
+
+        attachment = Attachment(idnote,filename)
+        db_session.add(attachment)
+        note.attachment_count += 1
+
+        return True, ''
+    except Exception as e:
+        return False, str(e)
+
+@app.route('/uploadimage/<int:idnote>/', methods=['POST', 'OPTIONS'])
+@login_required
+def uploadimage(idnote):
+    error = ''
+    url = ''
+    callback = request.args.get("CKEditorFuncNum")
+    if request.method == 'POST' and 'upload' in request.files:
+        filename=request.files['upload']
+        ret, error = upload_file(idnote, filename)
+        #if file saved successfully, commit it to db as well.
+        if ret:
+            db_session.commit()
+            url = '/imgs/'+ str(idnote) + "/" + filename.filename
+    else:
+        error = 'post error'
+    res = """<script type="text/javascript">
+    window.parent.CKEDITOR.tools.callFunction(%s, '%s', '%s');
+    </script>""" % (callback, url, error)
+    response = make_response(res)
+    response.headers["Content-Type"] = "text/html"
+    return response
+
+@app.route('/imgs/<int:idnote>/<path:filename>')
+def images(idnote, filename):
+    fullpath = os.path.join(ConfigClass.UPLOADS_DEFAULT_DEST+'/' + str(idnote), filename)
+    return send_file(fullpath,
+                 attachment_filename=filename,
+                 mimetype='image/png')
 
 @app.route('/download/<int:idnote>/<path:filename>')
 def download(idnote, filename):
@@ -23,32 +79,14 @@ def download(idnote, filename):
 def upload(idnote):
     """Upload a new file."""
     if request.method == 'POST':
-        note = Note.query.filter_by(idnote=idnote).first()
-        if not note:
-            flash('Note could not be found.', 'error')
-            return back.goback()
-
         filename=request.files['attachment']
-        if not secure_filename(filename.filename):
-            flash('File name is not secure.', 'error')
-            return back.goback()
-
-        attachment = Attachment.query.filter_by(idnote=idnote,filename=filename.filename).first()
-        if attachment:
-            flash('Attachment already exists.', 'error')
-            return back.goback()
-
-        attachment = Attachment(idnote,filename.filename)
-        db_session.add(attachment)
-
-        attachments = UploadSet(str(idnote), AllExcept(('exe', 'so', 'dll')))
-        configure_uploads(app, (attachments))
-
+        ret, error = upload_file(idnote, filename)
         #if file saved successfully, commit it to db as well.
-        if attachments.save(filename):
-            note.attachment_count += 1
+        if ret:
             db_session.commit()
             flash('Attachment successfully uploaded.', 'success')
+        else:
+            flash(error, 'error')
 
     return back.goback()
 

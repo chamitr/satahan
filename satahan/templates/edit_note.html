@@ -25,7 +25,8 @@
             <dd><input class = "btn btn-primary" type=submit value=Update>
           </dl>
         </form>
-        {% if edit_note and edit_note.idnote > 0 %}
+        <input type="text" id="noteid" value="{{ edit_note.idnote }}" hidden>
+        {% if edit_note %}
             {% set idnote=edit_note.idnote %}
             {% include 'manage_attachments.html' %}
         {% endif %}
