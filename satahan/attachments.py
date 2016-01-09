@@ -81,13 +81,18 @@ def upload(idnote):
     if request.method == 'POST':
         filename=request.files['attachment']
         ret, error = upload_file(idnote, filename)
-        #if file saved successfully, commit it to db as well.
         if ret:
+            #if file saved successfully, commit it to db as well.
             db_session.commit()
             flash('Attachment successfully uploaded.', 'success')
         else:
             flash(error, 'error')
 
+    return back.goback()
+
+@app.errorhandler(413)
+def error413(e):
+    flash('File too large. Satahan only supports files upto 2MB.', 'error')
     return back.goback()
 
 @app.route('/delete_attachment/<int:idnote>/<path:filename>', methods=['GET', 'POST'])

@@ -35,3 +35,4 @@ class ConfigClass(object):
     else:
         UPLOADS_DEFAULT_DEST =      '/home/satahan/uploads'
         UPLOADS_DEFAULT_URL =       'http://localhost:5001/'
+    MAX_CONTENT_LENGTH = 2 * 1024 * 1024
