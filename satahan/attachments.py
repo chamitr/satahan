@@ -87,7 +87,6 @@ def upload(idnote):
             flash('Attachment successfully uploaded.', 'success')
         else:
             flash(error, 'error')
-
     return back.goback()
 
 @app.errorhandler(413)
