@@ -14,14 +14,14 @@ from database import db_session
 def upload_file(idnote, filename):
     note = Note.query.filter_by(idnote=idnote).first()
     if not note:
-        return False, 'Note could not be found.'
+        return False, 'Note could not be found.', ''
 
     if not secure_filename(filename.filename):
-        return False, 'File name is not secure.'
+        return False, 'File name is not secure.', ''
 
     attachment = Attachment.query.filter_by(idnote=idnote,filename=filename.filename).first()
     if attachment:
-        return False, 'Attachment already exists.'
+        return False, 'Attachment already exists.', ''
 
     try:
         attachments = UploadSet(str(idnote), AllExcept(('exe', 'so', 'dll')))
@@ -33,9 +33,9 @@ def upload_file(idnote, filename):
         db_session.add(attachment)
         note.attachment_count += 1
 
-        return True, ''
+        return True, '', filename
     except Exception as e:
-        return False, str(e)
+        return False, str(e), ''
 
 @app.route('/uploadimage/<int:idnote>/', methods=['POST', 'OPTIONS'])
 @login_required
@@ -45,11 +45,11 @@ def uploadimage(idnote):
     callback = request.args.get("CKEditorFuncNum")
     if request.method == 'POST' and 'upload' in request.files:
         filename=request.files['upload']
-        ret, error = upload_file(idnote, filename)
+        ret, error, filename = upload_file(idnote, filename)
         #if file saved successfully, commit it to db as well.
         if ret:
             db_session.commit()
-            url = '/imgs/'+ str(idnote) + "/" + filename.filename
+            url = '/imgs/'+ str(idnote) + "/" + filename
     else:
         error = 'post error'
     res = """<script type="text/javascript">
