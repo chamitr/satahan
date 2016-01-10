@@ -50,7 +50,7 @@ class UserSettings(Base):
 
     def __init__(self, iduser):
         self.iduser = iduser
-        self.admin_points = 0
+        self.admin_points = 10
 
     def is_active(self):
         return True
