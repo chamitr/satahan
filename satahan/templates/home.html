@@ -4,15 +4,17 @@
     {% include 'tag_ctrl.html' %}
     <p></p>
     <input class = "btn btn-primary" type=submit value=Search>
-    {% if favourite %}
-        {% if not defaut_tag_group %}
-            <input type = "button" class = "btn btn-primary" value="Set as default group" ng-click="default_taggroup()">
+    {% if current_user.is_authenticated() %}
+        {% if favourite %}
+            {% if not defaut_tag_group %}
+                <input type = "button" class = "btn btn-primary" value="Set as default group" ng-click="default_taggroup()">
+            {% endif %}
+        {% else %}
+            <input type = "button" class = "btn btn-primary" value="Add to favourites" ng-click="manage_taggroup()">
         {% endif %}
-    {% else %}
-        <input type = "button" class = "btn btn-primary" value="Add to favourites" ng-click="manage_taggroup()">
-    {% endif %}
-    {% if current_user_taggroup %}
-        <a href="{{ url_for('manage_tags', tg=current_user_taggroup.idtaggroup)}}" class="btn btn-primary">Edit tags in this group</a>
+        {% if current_user_taggroup %}
+            <a href="{{ url_for('manage_tags', tg=current_user_taggroup.idtaggroup)}}" class="btn btn-primary">Edit tags in this group</a>
+        {% endif %}
     {% endif %}
 
     {% if current_user.is_admin %}
