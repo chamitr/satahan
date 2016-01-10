@@ -80,7 +80,7 @@ def upload(idnote):
     """Upload a new file."""
     if request.method == 'POST':
         filename=request.files['attachment']
-        ret, error = upload_file(idnote, filename)
+        ret, error, filename = upload_file(idnote, filename)
         if ret:
             #if file saved successfully, commit it to db as well.
             db_session.commit()
