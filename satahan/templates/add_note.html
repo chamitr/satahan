@@ -28,7 +28,7 @@
     <form action = "" method=post class=add-note>
       <dl>
         <dt>Title:
-        <dd><input type=text maxlength="255" name=title class="newNoteTitle" value = {{ new_note.title|safe }} >
+        <dd><input type=text maxlength="255" name=title class="newNoteTitle" value = "{{ new_note.title|safe }}" >
         <p></p>
         <dt>Text:
         <dd><textarea maxlength="65535" name="notetext" id="notetext">{{ new_note.text|safe }}</textarea>
