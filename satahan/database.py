@@ -18,3 +18,9 @@ def init_db():
     # you will have to import them first before calling init_db()
     import satahan.model
     Base.metadata.create_all(bind=engine)
+
+class Database:
+    @property
+    def session(self):
+        return db_session
+
