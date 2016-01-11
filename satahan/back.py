@@ -34,7 +34,3 @@ class back(object):
 back = back()
 anchor = back.anchor
 goback = back.goback
-
-@app.route('/go_back')
-def go_back():
-    return back.goback()
