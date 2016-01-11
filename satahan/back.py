@@ -34,3 +34,6 @@ class back(object):
 back = back()
 anchor = back.anchor
 goback = back.goback
+
+def go_back():
+    return back.goback()
