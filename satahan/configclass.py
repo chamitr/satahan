@@ -5,7 +5,7 @@ import socket
 # os.getenv() enables configuration through OS environment variables
 class ConfigClass(object):
     # Flask settings
-    SECRET_KEY =              os.getenv('SECRET_KEY',       'THIS IS AN INSECURE SECRET')
+    SECRET_KEY =              os.getenv('SECRET_KEY',       '5BGalloluwaMinuwangoda')
     SECURITY_PASSWORD_SALT = 'my_precious_two'
 
     if socket.gethostname() == 'BFF':
@@ -36,3 +36,7 @@ class ConfigClass(object):
         UPLOADS_DEFAULT_DEST =      '/home/satahan/uploads'
         UPLOADS_DEFAULT_URL =       'http://localhost:5001/'
     MAX_CONTENT_LENGTH = 2 * 1024 * 1024
+
+    # Flask-OAuth attributes
+    FACEBOOK_APP_ID = '1684359128476938'
+    FACEBOOK_APP_SECRET = '0128bc221c8bdd8bfa2db5720f8240fe'

@@ -20,11 +20,12 @@ class User(Base, UserMixin):
 
     id = Column(Integer, primary_key=True)
     username = Column(String(50), nullable=False, default='')
-    email = Column(String(120), nullable=False, unique=True)
-    password = Column(String(60), nullable=False, default='')
+    email = Column(String(120), nullable=False)
+    password = Column(String(60), nullable=True)
     active = Column(Boolean(), nullable=False, server_default='0')
     confirmed_at = Column(DateTime())
     is_admin = Column(Boolean(), nullable=False, server_default='0')
+    social_id = Column(String(64), nullable=True)
     usertaggroups = relationship('TagGroup', secondary=usertaggroups, backref='user', lazy='dynamic')
 
     @property
@@ -36,7 +37,8 @@ class User(Base, UserMixin):
            'password'           : self.password,
            'active'             : self.active,
            'confirmed_at'       : self.confirmed_at,
-           'is_admin'           : self.is_admin
+           'is_admin'           : self.is_admin,
+           'social_id'          : self.social_id
        }
 
 class UserSettings(Base):
