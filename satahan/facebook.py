@@ -17,9 +17,7 @@ facebook = oauth.remote_app('facebook',
     authorize_url='https://www.facebook.com/dialog/oauth',
     consumer_key=app.config['FACEBOOK_APP_ID'],
     consumer_secret=app.config['FACEBOOK_APP_SECRET'],
-    request_token_params={'scope': 'email'},
-    access_token_method='GET',
-    access_token_params={'disable_ssl_certificate_validation': 'True' }
+    request_token_params={'scope': 'email'}
 )
 
 @facebook.tokengetter
