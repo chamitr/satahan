@@ -117,7 +117,7 @@ def add_note(published):
                                    checked_tags = checked_tags, attachments = attachments, show_tag_ctrl=True)
         else:
             idnote_next = db_session.query(func.max(Note.idnote)).first()[0] + 1
-            #create new empty draft note
+            #write new empty draft note
             draft_note = Note("", "", current_user.id, False, idnote=idnote_next)
             db_session.add(draft_note)
             db_session.commit()
