@@ -49,7 +49,7 @@
                     <li><a href="{{ url_for('user.profile') }}"><span class="glyphicon glyphicon-user"></span>  User profile</a></li>
                     <li><a href="{{ url_for('user.logout') }}"><span class="glyphicon glyphicon-log-out"></span> Sign out</a></li>
                 {% else %}
-                    <li><a class="btn btn-danger" href="{{ url_for('user.register') }}"><span class="glyphicon glyphicon-plus"></span> Register and write your own</a></li>
+                    <li><a class="btn btn-success" href="{{ url_for('user.register') }}"><span class="glyphicon glyphicon-plus black_font"></span><span class="black_font"> Register and write your own</span></a></li>
                     <li><a href="{{ url_for('user.login') }}" ><span class="glyphicon glyphicon-log-in"></span> Sign in</a></li>
                 {% endif %}
               </ul>
