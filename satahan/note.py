@@ -1,9 +1,9 @@
 from flask import request, session, redirect, render_template, flash
 from flask_user import login_required, current_user
-from model import Note, Tag, Comment, notetags, TagGroup, usertaggroups, UserSettings, Attachment
+from model import Note, Tag, Comment, notetags, TagGroup, UserSettings, User
 from flask.ext.paginate import Pagination
 from satahan import app, back
-from tag_helper import get_note_tags, get_tags_in_group, get_user_default_taggroup, get_current_user_taggroup
+from tag_helper import get_note_tags, get_tags_in_group, get_current_user_taggroup
 from attachments import delete_all_attachments, get_all_attachments
 from admin_points import AdminPoints
 from sets import Set
@@ -12,12 +12,14 @@ from database import db_session
 
 per_page = 10
 
-def get_notes_in_group_stmt(returned_fields, idtaggroup,where_clause):
-    s1 = select([returned_fields]).select_from(Note.__table__.outerjoin(notetags, notetags.c.idnote==Note.__table__.c.idnote)\
-        .outerjoin(Tag.__table__, notetags.c.idtag==Tag.__table__.c.idtag))\
+def get_notes_in_group_stmt(returned_fields, where_clause):
+    s1 = select(returned_fields).select_from(Note.__table__.outerjoin(notetags, notetags.c.idnote==Note.__table__.c.idnote)\
+        .outerjoin(Tag.__table__, notetags.c.idtag==Tag.__table__.c.idtag)\
+        .outerjoin(User.__table__, Note.__table__.c.iduser==User.__table__.c.id))\
         .where(where_clause)
-    s2 = select([returned_fields]).select_from(notetags.outerjoin(Note.__table__, notetags.c.idnote==Note.__table__.c.idnote)\
-        .outerjoin(Tag.__table__, notetags.c.idtag==Tag.__table__.c.idtag))\
+    s2 = select(returned_fields).select_from(notetags.outerjoin(Note.__table__, notetags.c.idnote==Note.__table__.c.idnote)\
+        .outerjoin(Tag.__table__, notetags.c.idtag==Tag.__table__.c.idtag)\
+        .outerjoin(User.__table__, Note.__table__.c.iduser==User.__table__.c.id))\
         .where(where_clause)
     return union(s1,s2)
 
@@ -57,10 +59,10 @@ def query_note():
         where_clause = and_(Tag.idtaggroup==usertaggroup.idtaggroup, Note.published==True)
 
     #  get total count
-    stmt = get_notes_in_group_stmt(Note.idnote, usertaggroup.idtaggroup, where_clause)
+    stmt = get_notes_in_group_stmt([Note.idnote], where_clause)
     note_total = len(db_session.execute(stmt).fetchall())
     #  get data
-    stmt = get_notes_in_group_stmt(Note, usertaggroup.idtaggroup, where_clause)
+    stmt = get_notes_in_group_stmt([Note, User], where_clause)
     stmt = stmt.offset((page-1)*per_page)\
             .limit(per_page)
     note_items = db_session.execute(stmt).fetchall()

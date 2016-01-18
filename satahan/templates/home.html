@@ -34,9 +34,7 @@
     <td style="width:100%;vertical-align:top">
         <div id="main-div">
             <div data = {{ note.idnote }} class = "note" ng-click="showNote( {{ note.idnote }} )">
-                {% for user in note.user %}
-                    <p class = "username">{{user.username}} <span class="createdatetime">  {{ note.createdatetime|timesince }}</span></p>
-                {% endfor %}
+                <p class = "username">{{note.username}} <span class="createdatetime">  {{ note.createdatetime|timesince }}</span></p>
                 <div style="padding-top: 7px; padding-bottom: 7px">
                     <h2>{{ note.title|safe }}</h2>
                     <p></p>
