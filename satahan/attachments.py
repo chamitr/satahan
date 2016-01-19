@@ -91,7 +91,7 @@ def upload(idnote):
 
 @app.errorhandler(413)
 def error413(e):
-    flash('File too large. Satahan only supports files upto 2MB.', 'error')
+    flash('File too large. Satahan only supports files upto 1MB.', 'error')
     return back.goback()
 
 @app.route('/delete_attachment/<int:idnote>/<path:filename>', methods=['GET', 'POST'])
