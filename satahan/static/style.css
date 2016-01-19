@@ -175,7 +175,11 @@ input[type=checkbox].glyphicon{
 
 .black_font
 {
-    color: black;
+    color: black !important;
+}
+.black_font:hover
+{
+    color: white !important;
 }
 /*
 input[type="checkbox"] {
