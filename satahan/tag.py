@@ -41,10 +41,18 @@ def add_tag():
     return tag_manage_view(tg)
 
 def tag_manage_view(tg):
-    current_user_taggroup = TagGroup.query.filter_by(idtaggroup=tg).first()
-    tgs = Tag.query.filter_by(idtaggroup=tg).all()
-    tags_in_use = db_session.query(notetags.c.idtag).filter(notetags.c.idtag.in_(t.idtag for t in tgs)).all()
-    tags_in_use = [t[0] for t in tags_in_use]
+    tags_in_use=[]
+    tgs = []
+    current_user_taggroup = None
+    if tg:
+        current_user_taggroup = TagGroup.query.filter_by(idtaggroup=tg).first()
+    if current_user_taggroup:
+        tgs = Tag.query.filter_by(idtaggroup=tg).all()
+        tags_in_use = db_session.query(notetags.c.idtag).filter(notetags.c.idtag.in_(t.idtag for t in tgs)).all()
+        tags_in_use = [t[0] for t in tags_in_use]
+    elif tg is not None:
+        flash('Could not find group.', 'error')
+        return back.go_back()
     user_settings = AdminPoints.get_user_settings()
     return render_template('/manage_tags.html', tags=tgs, current_user_taggroup = current_user_taggroup,\
                            tags_in_use = tags_in_use, user_settings=user_settings)
@@ -54,7 +62,8 @@ def tag_manage_view(tg):
 def manage_tags():
     tg = request.args.get('tg', None)
     if not tg:
-        return flash('Could not find group.', 'error')
+        flash('Could not find group.', 'error')
+        return back.go_back()
     return tag_manage_view(tg)
 
 @app.route('/edit_tag', methods=['GET', 'POST'])
