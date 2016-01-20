@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block header %}
-    <script src="//cdn.ckeditor.com/4.5.2/standard/ckeditor.js"></script>
+    <script src="{{ url_for('static', filename='ckeditor/ckeditor.js') }}"></script>
 {% endblock %}
 
 {% block extend_tags %}

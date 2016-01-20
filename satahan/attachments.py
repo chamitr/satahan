@@ -9,6 +9,7 @@ from werkzeug import secure_filename
 import os
 from configclass import ConfigClass
 from database import db_session
+from werkzeug.exceptions import RequestEntityTooLarge
 
 @login_required
 def upload_file(idnote, filename):
@@ -59,6 +60,37 @@ def uploadimage(idnote):
     response.headers["Content-Type"] = "text/html"
     return response
 
+@app.route('/uploadimage_json/<int:idnote>/', methods=['POST', 'OPTIONS'])
+@login_required
+def uploadimage_json(idnote):
+    error = ''
+    url = ''
+    filename = ''
+    try:
+        request.files
+    except RequestEntityTooLarge:
+        error = 'File too large. Satahan only supports files up to 1MB.'
+
+    if len(error) == 0 and request.method == 'POST' and 'upload' in request.files:
+        filename=request.files['upload']
+        ret, error, filename = upload_file(idnote, filename)
+        #if file saved successfully, commit it to db as well.
+        if ret:
+            db_session.commit()
+            url = '/imgs/'+ str(idnote) + "/" + filename
+    else:
+        error = error if len(error) > 0 else 'post error'
+
+    res = {
+        "uploaded": 0 if len(error) > 0 else 1,
+        "fileName": filename,
+        "url": url,
+        "error": {
+            "message": error
+        }
+    }
+    return jsonify(res)
+
 @app.route('/imgs/<int:idnote>/<path:filename>')
 def images(idnote, filename):
     fullpath = os.path.join(ConfigClass.UPLOADS_DEFAULT_DEST+'/' + str(idnote), filename)
@@ -91,7 +123,7 @@ def upload(idnote):
 
 @app.errorhandler(413)
 def error413(e):
-    flash('File too large. Satahan only supports files upto 1MB.', 'error')
+    flash('File too large. Satahan only supports files up to 1MB.', 'error')
     return back.goback()
 
 @app.route('/delete_attachment/<int:idnote>/<path:filename>', methods=['GET', 'POST'])

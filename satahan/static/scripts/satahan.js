@@ -5,7 +5,9 @@ function init_ckeditor() {
     if (notetext != null)
     {
         CKEDITOR.replace( 'notetext', {
-        filebrowserImageUploadUrl: '/uploadimage/' + noteid.value + "/"
+        extraPlugins: 'uploadimage',
+        filebrowserImageUploadUrl: '/uploadimage/' + noteid.value + "/",
+        uploadUrl: '/uploadimage_json/' + noteid.value + "/"
         });
     }
 }
