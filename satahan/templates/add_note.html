@@ -12,7 +12,7 @@
 {% endblock %}
 
 {% block main %}
-  {% if current_user.is_admin %}
+  {% if current_user.is_admin and current_user_taggroup %}
       <form method=POST enctype=multipart/form-data action="{{ url_for('upload_notes', idtaggroup=current_user_taggroup.idtaggroup) }}">
           <input type=file name=upload_notes>
           <p></p>
