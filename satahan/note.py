@@ -7,7 +7,7 @@ from tag_helper import get_note_tags, get_tags_in_group, get_current_user_taggro
 from attachments import delete_all_attachments, get_all_attachments
 from admin_points import AdminPoints
 from sets import Set
-from sqlalchemy import and_, select, union, func
+from sqlalchemy import and_, select, union, func, desc
 from database import db_session
 
 per_page = 10
@@ -21,7 +21,7 @@ def get_notes_in_group_stmt(returned_fields, where_clause):
         .outerjoin(Tag.__table__, notetags.c.idtag==Tag.__table__.c.idtag)\
         .outerjoin(User.__table__, Note.__table__.c.iduser==User.__table__.c.id))\
         .where(where_clause)
-    return union(s1,s2)
+    return union(s1,s2).order_by(desc("idnote"))
 
 @app.route('/')
 @back.anchor
