@@ -49,7 +49,7 @@ main_app.controller('tag_ctrl', function($scope, $http, $window) {
         var json_filter = JSON.stringify(edit_tg)
         $http.get("/default_group", {params: {"p": json_filter}}  )
         .success(function (response) {
-           alert("Default group set.");
+           alert("Default topic set.");
            $window.location.reload();
         });
     };
@@ -61,11 +61,11 @@ main_app.controller('tag_ctrl', function($scope, $http, $window) {
         var json_filter = JSON.stringify(edit_tg)
         $http.get("/manage_group2", {params: {"p": json_filter}}  )
         .success(function (response) {
-           alert("Group added to favourites.");
+           alert("Topic added to favourites.");
            $window.location.reload();
         })
         .error(function (response) {
-           alert("Failed to add group to favourites.");
+           alert("Failed to add topic to favourites.");
         });
     };
 

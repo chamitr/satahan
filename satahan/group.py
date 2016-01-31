@@ -61,7 +61,7 @@ def manage_group():
             current_user.usertaggroups.append(g)
     db_session.commit()
 
-    flash("Group successfully updated.", "success")
+    flash("Topic successfully updated.", "success")
 
     #If there was not favourites and they were added for the first time, this could be a new user.
     #Redirect to home page.
@@ -95,7 +95,7 @@ def add_group():
     tag_group_name = request.form['taggroupname']
     tg = TagGroup.query.filter_by(taggroupname = tag_group_name).first()
     if tg:
-        flash("Group already exists.", "error")
+        flash("Topic already exists.", "error")
         return back.go_back()
 
     taggroup = TagGroup(tag_group_name)
@@ -107,7 +107,7 @@ def add_group():
 
     db_session.commit()
 
-    flash("Group successfully added.", "success")
+    flash("Topic successfully added.", "success")
     return back.go_back()
 
 @app.route('/delete_group/<int:idtaggroup>', methods=['POST'])
@@ -122,11 +122,11 @@ def delete_group(idtaggroup):
     tg_query = TagGroup.query.filter_by(idtaggroup = idtaggroup)
     tg = tg_query.first()
     if not tg:
-        flash("Group could not be found.", "error")
+        flash("Topic could not be found.", "error")
         return back.go_back()
 
     if idtaggroup in get_taggroups_in_use():
-        flash("Group is in use.", "error")
+        flash("Topic is in use.", "error")
         return back.go_back()
 
     if tg in current_user.usertaggroups:
@@ -142,7 +142,7 @@ def delete_group(idtaggroup):
 
     db_session.commit()
 
-    flash("Group successfully deleted.", "success")
+    flash("Topic successfully deleted.", "success")
     return back.go_back()
 
 @app.route('/edit_group', methods=['GET', 'POST'])
@@ -158,11 +158,11 @@ def edit_group():
     json_args = json.loads(args)
     tg = TagGroup.query.filter_by(idtaggroup = json_args['edit_idtaggroup']).first()
     if not tg:
-        flash("Group could not be found.", "error")
+        flash("Topic could not be found.", "error")
         return back.go_back()
 
     if not tg in current_user.usertaggroups:
-        flash("You have not subscribed to this group.", "error")
+        flash("You have not subscribed to this topic.", "error")
         return back.go_back()
 
     tg.taggroupname = json_args['edit_taggroupname']
@@ -172,7 +172,7 @@ def edit_group():
 
     db_session.commit()
 
-    flash("Group successfully updated.", "success")
+    flash("Topic successfully updated.", "success")
     return back.go_back()
 
 @app.route('/default_group', methods=['GET', 'POST'])

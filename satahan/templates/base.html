@@ -36,11 +36,11 @@
                     <li><a href="\"><span class="glyphicon glyphicon-home"></span> Home</a></li>
                     <li><a href="{{ url_for('add_note', published=0) }}"><span class="glyphicon glyphicon-plus"></span> Write new</a></li>
                     <li><a href="{{ url_for('add_note', published=0) }}"><span class="glyphicon glyphicon-pencil"></span> Draft</a></li>
-                    <li><a href="{{ url_for('manage_group') }}"><span class="glyphicon glyphicon-tags"></span> Groups</a></li>
+                    <li><a href="{{ url_for('manage_group') }}"><span class="glyphicon glyphicon-tags"></span> Topics</a></li>
                     {% block extramenu %}
                     {% endblock %}
                 {% else %}
-                    <li><a href="{{ url_for('view_group') }}"><span class="glyphicon glyphicon-tags"></span> Groups</a></li>
+                    <li><a href="{{ url_for('view_group') }}"><span class="glyphicon glyphicon-tags"></span> Topics</a></li>
                 {% endif %}
               </ul>
               <ul class="nav navbar-nav navbar-right">

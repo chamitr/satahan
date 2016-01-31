@@ -14,12 +14,12 @@
         <div class="panel panel-default">
           <div class="panel-body">
                 <p>Descripton of buttons:</p>
-                <span class="glyphicon glyphicon-edit"></span>&nbsp; : Edit group name. Group should be in your favourites list.<br>
-                <span class="glyphicon glyphicon-trash"></span>&nbsp; : Delete groups not in use.<br>
-                <span class="glyphicon glyphicon-star-empty"></span>&nbsp; : Add group to favourites. Select and click Update favorites button.<br>
-                <span class="glyphicon glyphicon-star"></span>&nbsp; : Remove group from favourites. Select and click Update favorites button.<br>
+                <span class="glyphicon glyphicon-edit"></span>&nbsp; : Edit topic name. Topic should be in your favourites list.<br>
+                <span class="glyphicon glyphicon-trash"></span>&nbsp; : Delete topics not in use.<br>
+                <span class="glyphicon glyphicon-star-empty"></span>&nbsp; : Add topic to favourites. Select and click Update favorites button.<br>
+                <span class="glyphicon glyphicon-star"></span>&nbsp; : Remove topic from favourites. Select and click Update favorites button.<br>
                 <p></p>
-                <p>You have {{ user_settings.admin_points }} <a href="about#adminpoints">admin points</a>. Adding a group requires 2 admin points. Edit and delete require 1 admin point.</p>
+                <p>You have {{ user_settings.admin_points }} <a href="about#adminpoints">admin points</a>. Adding a topic requires 2 admin points. Edit and delete require 1 admin point.</p>
           </div>
         </div>
     </div>
@@ -27,7 +27,7 @@
     <form action="">
         <input type="input" name="taggroupname" maxlength="75">
         <input type="input" name="f" value={{ f }} hidden>
-        <input formmethod=post formaction="{{ url_for('add_group') }}" class = "btn btn-primary" type=submit value="Add group">
+        <input formmethod=post formaction="{{ url_for('add_group') }}" class = "btn btn-primary" type=submit value="Add topic">
         <input formmethod=get formaction="{{ url_for('manage_group') }}" class = "btn btn-primary" type=submit value="Search">
     </form>
     <p></p>

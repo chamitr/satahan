@@ -7,7 +7,7 @@
 {% block extend_tags %}
     {% include 'tag_ctrl.html' %}
     {% if current_user_taggroup %}
-        <a href="{{ url_for('manage_tags', tg=current_user_taggroup.idtaggroup)}}" class="btn btn-primary">Edit tags in this group</a>
+        <a href="{{ url_for('manage_tags', tg=current_user_taggroup.idtaggroup)}}" class="btn btn-primary">Edit tags in this topic</a>
     {% endif %}
 {% endblock %}
 

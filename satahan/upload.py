@@ -20,7 +20,7 @@ def upload_notes(idtaggroup):
 
     taggroup = TagGroup.query.filter_by(idtaggroup=idtaggroup).first()
     if not taggroup:
-        flash('Group not found.', 'error')
+        flash('Topic not found.', 'error')
         return back.goback()
 
     filename=request.files['upload_notes']

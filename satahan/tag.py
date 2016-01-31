@@ -37,7 +37,7 @@ def add_tag():
     adminpoints.change_admin_points(-1)
 
     db_session.commit()
-    flash('Tag successfully added to group.', 'success')
+    flash('Tag successfully added to topic.', 'success')
     return tag_manage_view(tg)
 
 def tag_manage_view(tg):
@@ -51,7 +51,7 @@ def tag_manage_view(tg):
         tags_in_use = db_session.query(notetags.c.idtag).filter(notetags.c.idtag.in_(t.idtag for t in tgs)).all()
         tags_in_use = [t[0] for t in tags_in_use]
     elif tg is not None:
-        flash('Could not find group.', 'error')
+        flash('Could not find topic.', 'error')
         return back.go_back()
     user_settings = AdminPoints.get_user_settings()
     return render_template('/manage_tags.html', tags=tgs, current_user_taggroup = current_user_taggroup,\
@@ -62,7 +62,7 @@ def tag_manage_view(tg):
 def manage_tags():
     tg = request.args.get('tg', None)
     if not tg:
-        flash('Could not find group.', 'error')
+        flash('Could not find topic.', 'error')
         return back.go_back()
     return tag_manage_view(tg)
 
@@ -114,7 +114,7 @@ def delete_tag(idtaggroup, idtag):
     adminpoints.change_admin_points(-1)
 
     db_session.commit()
-    flash('Tag successfully deleted from group.', 'success')
+    flash('Tag successfully deleted from topic.', 'success')
     return tag_manage_view(idtaggroup)
 
 @app.route('/move_tags')
@@ -126,7 +126,7 @@ def move_tags():
     tag_group_name = request.args.get('taggroupname', None)
     tag_group_name.strip()
     if len(tag_group_name) == 0:
-        flash('Group name is empty.', 'error')
+        flash('Topic name is empty.', 'error')
         return back.goback()
 
     tag_group = TagGroup.query.filter_by(taggroupname=tag_group_name).first()

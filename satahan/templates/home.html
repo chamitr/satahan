@@ -7,20 +7,20 @@
     {% if current_user.is_authenticated() %}
         {% if favourite %}
             {% if not defaut_tag_group %}
-                <input type = "button" class = "btn btn-primary" value="Set as default group" ng-click="default_taggroup()">
+                <input type = "button" class = "btn btn-primary" value="Set as default topic" ng-click="default_taggroup()">
             {% endif %}
         {% else %}
             <input type = "button" class = "btn btn-primary" value="Add to favourites" ng-click="manage_taggroup()">
         {% endif %}
         {% if current_user_taggroup %}
-            <a href="{{ url_for('manage_tags', tg=current_user_taggroup.idtaggroup)}}" class="btn btn-primary">Edit tags in this group</a>
+            <a href="{{ url_for('manage_tags', tg=current_user_taggroup.idtaggroup)}}" class="btn btn-primary">Edit tags in this topic</a>
         {% endif %}
     {% endif %}
 
     {% if current_user.is_admin %}
         <p></p>
         <input type="input" name="taggroupname" style="color:black;"  maxlength="75">
-        <button class="btn btn-primary" type="submit" formaction="{{ url_for('move_tags') }}">Move tags to group</button>
+        <button class="btn btn-primary" type="submit" formaction="{{ url_for('move_tags') }}">Move tags to topic</button>
         <p></p>
         <input type="input" name="tagname" style="color:black;" maxlength="75">
         <button class="btn btn-primary" type="submit" formaction="{{ url_for('merge_tags') }}">Merge tags to target</button>
