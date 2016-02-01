@@ -141,6 +141,10 @@ def add_note(published):
     #get tag selectoin
     tags = get_note_tags(request.form)
     if not tags and published == 1:
+        #if no tags, we save work as draft so user data is not lost
+        newnote.published = 0
+        db_session.add(newnote)
+        db_session.commit()
         #problem with tag selection
         flash("Content needs tags to publish them.", "error")
         return render_template('add_note.html', new_note = newnote, tags = tagsingroup,\
