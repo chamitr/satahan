@@ -7,6 +7,7 @@ from satahan import app, back
 from admin_points import AdminPoints
 from sqlalchemy import delete, and_
 from database import db_session
+from tag_helper import set_default_group
 
 def get_taggroups_in_use():
     taggroups_in_use = Tag.query.filter(Tag.idtag.in_(db_session.query(notetags.c.idtag))).all()
@@ -30,8 +31,10 @@ def get_manage_group_view(s=None):
         else:
             taggroups = TagGroup.query.order_by(TagGroup.taggroupname.asc()).all()
     user_settings = AdminPoints.get_user_settings()
+    publishing = request.args.get('publishing', None)
+    publishing= True if publishing is not None else False
     return render_template('/manage_group.html', taggroups=taggroups, taggroupsinuse = taggroupsinuse,\
-                           user_settings=user_settings,f=f)
+                           user_settings=user_settings,f=f,publishing=publishing)
 
 @app.route('/view_group', methods=['GET', 'POST'])
 def view_group():
@@ -178,13 +181,9 @@ def edit_group():
 @app.route('/default_group', methods=['GET', 'POST'])
 @login_required
 def default_group():
-    usersettings = UserSettings.query.filter_by(iduser = current_user.id).first()
     tag = request.args.get('p')
     json_tag = json.loads(tag)
     tg = json_tag['tg']
-    if not usersettings:
-        usersettings = UserSettings(current_user.id)
-        db_session.add(usersettings)
-    usersettings.idtaggroup_def = tg
+    set_default_group(tg)
     db_session.commit()
     return ('', 204)

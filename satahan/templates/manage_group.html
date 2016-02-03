@@ -8,6 +8,7 @@
 {% block main %}
 
     <button class = "btn btn-info" data-toggle="collapse" data-target="#tips">Tips</button>
+    <a class = "btn btn-danger" href="{{ url_for('add_note', published=0) }}">Cancel publishing</a>
     <p></p>
 
     <div id="tips" class="collapse">
@@ -67,14 +68,20 @@
                             <label class="btn btn-xs">
                                 <input type="checkbox" name="taggroup" class="glyphicon glyphicon-star-empty" value={{ taggroup.idtaggroup }} {% if taggroup in current_user.usertaggroups %}checked{% endif %}>
                             </label>
-                            <a href="\?tg={{ taggroup.idtaggroup }}"> {{ taggroup.taggroupname }}</a>
+                            {% if publishing %}
+                                <a href="{{ url_for('manage_tags', tg = taggroup.idtaggroup ) }}&publishing"> {{ taggroup.taggroupname }}</a>
+                            {% else %}
+                                <a href="\?tg={{ taggroup.idtaggroup }}"> {{ taggroup.taggroupname }}</a>
+                            {% endif %}
                         </td>
                     {% endfor %}
                 </tr>
             {% endfor %}
             </table>
             <hr>
-            <input class = "btn btn-primary" type=submit value="Update favorites">
+            {% if not publishing %}
+                <input class = "btn btn-primary" type=submit value="Update favorites">
+            {% endif %}
         </form>
 
     </div>

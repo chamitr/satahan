@@ -101,6 +101,10 @@ def add_note(published):
     if request.method == 'GET':
         usertaggroup = get_current_user_taggroup()
         draft_note = Note.query.filter_by(iduser=current_user.id, published=False).first()
+        publishing = request.args.get('publishing', None)
+        publishing= True if publishing is not None else False
+        if publishing:
+            flash("Select tags for your note above", "info")
         if draft_note:
             checked_tags = []
             #If draft note is found, display it. However, if the user has a selection, it should get priority.
@@ -116,7 +120,8 @@ def add_note(published):
                 tags_in_group=get_tags_in_group(usertaggroup.idtaggroup)
             return render_template('add_note.html', new_note = draft_note, tags = tags_in_group,\
                 usertaggroups = current_user.usertaggroups, current_user_taggroup = usertaggroup,\
-                                   checked_tags = checked_tags, attachments = attachments, show_tag_ctrl=True)
+                checked_tags = checked_tags, attachments = attachments, show_tag_ctrl=True,
+                publishing=publishing)
         else:
             idnote_next = db_session.query(func.max(Note.idnote)).first()[0] + 1
             #write new empty draft note
@@ -125,7 +130,8 @@ def add_note(published):
             db_session.commit()
             return render_template('add_note.html', new_note = draft_note, tags = tagsingroup,\
                                    usertaggroups = current_user.usertaggroups,\
-                                   current_user_taggroup = usertaggroup, show_tag_ctrl=True)
+                                   current_user_taggroup = usertaggroup, show_tag_ctrl=True,
+                                   publishing=publishing)
     #if draft found, update it - we should always find it because we create empty one in get section
     newnote = Note.query.filter_by(iduser=current_user.id, published=False).first()
     if newnote:
@@ -141,14 +147,22 @@ def add_note(published):
     #get tag selectoin
     tags = get_note_tags(request.form)
     if not tags and published == 1:
-        #if no tags, we save work as draft so user data is not lost
+        #if no taggroup, we save work as draft so user data is not lost
         newnote.published = 0
         db_session.add(newnote)
         db_session.commit()
+
+        publishing = request.args.get('publishing', None)
+        publishing= True if publishing is not None else False
+        if publishing:
+            #meaning the user has gone through the topic and tag selection. Give an error.
+            flash("Please select tags above before you could publish.", "error")
+            return back.go_back()
+
         #problem with tag selection
-        flash("Content needs tags to publish them.", "error")
-        return render_template('add_note.html', new_note = newnote, tags = tagsingroup,\
-                usertaggroups = current_user.usertaggroups, current_user_taggroup = usertaggroup, show_tag_ctrl=True)
+        flash("Content needs a topic and tags to publish them. Select a topic and then tags.", "info")
+        return redirect('/manage_group?publishing')
+
     #add note to db
     db_session.add(newnote)
     #link tags to note

@@ -41,7 +41,6 @@ def facebook_authorized(resp):
     session['oauth_token'] = (resp['access_token'], '')
     me = facebook.get('/me?fields=name,email')
     user = User.query.filter_by(social_id=me.data['id']).first()
-    print(me.data)
     if not user:
         user = User(social_id=me.data['id'], username=me.data['name'], email=me.data['email'],
                     active=True, confirmed_at=datetime.now())

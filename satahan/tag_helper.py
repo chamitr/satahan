@@ -3,6 +3,7 @@ __author__ = 'Chamit'
 from flask import request
 from flask_user import current_user
 from model import usertaggroups, TagGroup, Tag, UserSettings
+from database import db_session
 
 def get_note_tags(form):
     tags = request.form['note_tags']
@@ -21,6 +22,13 @@ def get_user_default_taggroup():
     else:
         return current_user.usertaggroups.first()#just use the first one
 
+def set_default_group(tg):
+    usersettings = UserSettings.query.filter_by(iduser = current_user.id).first()
+    if not usersettings:
+        usersettings = UserSettings(current_user.id)
+        db_session.add(usersettings)
+    usersettings.idtaggroup_def = tg
+
 def get_current_user_taggroup():
     idtaggroup = request.args.get('tg', None)#both t and tg must be provided
     usertaggroup = None
@@ -32,6 +40,12 @@ def get_current_user_taggroup():
                 if not taggroup:
                     usertaggroup = get_user_default_taggroup()
                 else:
+                    publishing = request.args.get('publishing', None)
+                    publishing= True if publishing is not None else False
+                    if publishing:
+                        #if publishing automatically add taggroup to usertaggroups
+                        current_user.usertaggroups.append(taggroup)
+                        db_session.commit()
                     usertaggroup = taggroup
         else:
             usertaggroup = get_user_default_taggroup()

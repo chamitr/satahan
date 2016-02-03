@@ -20,13 +20,13 @@ def add_tag():
     #check admin points
     if not adminpoints.is_enough_admin_points(1):
         flash("Not enough admin points.", "error")
-        return tag_manage_view(tg)
+        return back.go_back()
 
     #if found, return it
     tag_query = Tag.query.filter_by(tagname=tag, idtaggroup=tg).first()
     if tag_query:
         flash('Failed to add tag. Tag already exists.', 'error')
-        return tag_manage_view(tg)
+        return back.go_back()
 
     taggroup = TagGroup.query.filter_by(idtaggroup=tg).first()
     tag = Tag(tag, tg, page)
@@ -38,7 +38,7 @@ def add_tag():
 
     db_session.commit()
     flash('Tag successfully added to topic.', 'success')
-    return tag_manage_view(tg)
+    return back.go_back()
 
 def tag_manage_view(tg):
     tags_in_use=[]
@@ -54,10 +54,17 @@ def tag_manage_view(tg):
         flash('Could not find topic.', 'error')
         return back.go_back()
     user_settings = AdminPoints.get_user_settings()
+    publishing = request.args.get('publishing', None)
+    publishing= True if publishing is not None else False
+    if publishing:
+        flash('Review tags in topic. If you have all the tags you need, click Ok button at the bottom. \
+              You can select tags and publish in the next step.', 'info')
     return render_template('/manage_tags.html', tags=tgs, current_user_taggroup = current_user_taggroup,\
-                           tags_in_use = tags_in_use, user_settings=user_settings)
+                           tags_in_use = tags_in_use, user_settings=user_settings,\
+                           publishing=publishing)
 
 @app.route('/manage_tags', methods=['GET'])
+@back.anchor
 @login_required
 def manage_tags():
     tg = request.args.get('tg', None)
@@ -102,12 +109,12 @@ def delete_tag(idtaggroup, idtag):
     #check admin points
     if not adminpoints.is_enough_admin_points(1):
         flash("Not enough admin points.", "error")
-        return tag_manage_view(idtaggroup)
+        return back.go_back()
 
     tag = Tag.query.filter_by(idtag = idtag)
     if not tag:
         flash('Tag could not be found.', 'error')
-        return tag_manage_view(idtaggroup)
+        return back.go_back()
     tag.delete()
 
     #reduce admin points
@@ -115,7 +122,7 @@ def delete_tag(idtaggroup, idtag):
 
     db_session.commit()
     flash('Tag successfully deleted from topic.', 'success')
-    return tag_manage_view(idtaggroup)
+    return back.go_back()
 
 @app.route('/move_tags')
 @login_required
