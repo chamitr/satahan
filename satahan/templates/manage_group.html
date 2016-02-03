@@ -8,7 +8,9 @@
 {% block main %}
 
     <button class = "btn btn-info" data-toggle="collapse" data-target="#tips">Tips</button>
-    <a class = "btn btn-danger" href="{{ url_for('add_note', published=0) }}">Cancel publishing</a>
+    {% if publishing %}
+        <a class = "btn btn-danger" href="{{ url_for('add_note', published=0) }}">Cancel publishing</a>
+    {% endif %}
     <p></p>
 
     <div id="tips" class="collapse">
