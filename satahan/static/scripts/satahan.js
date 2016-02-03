@@ -7,7 +7,8 @@ function init_ckeditor() {
         CKEDITOR.replace( 'notetext', {
         extraPlugins: 'uploadimage',
         filebrowserImageUploadUrl: '/uploadimage/' + noteid.value + "/",
-        uploadUrl: '/uploadimage_json/' + noteid.value + "/"
+        uploadUrl: '/uploadimage_json/' + noteid.value + "/",
+        allowedContent: true
         });
     }
 }
