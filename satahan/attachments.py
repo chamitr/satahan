@@ -26,7 +26,7 @@ def upload_file(idnote, filename, imagesonly):
 
     cl = request.content_length
     if cl is not None and imagesonly and cl > 1 * 1024 * 1024:
-        raise RequestEntityTooLarge()
+        raise ('Request Entity Too Large', 413)
 
     try:
         attachments = UploadSet(str(idnote), IMAGES if imagesonly else AllExcept(EXECUTABLES))
