@@ -10,6 +10,7 @@ import os
 from configclass import ConfigClass
 from database import db_session
 from werkzeug.exceptions import RequestEntityTooLarge
+import urllib2
 
 @login_required
 def upload_file(idnote, filename, imagesonly):
@@ -26,7 +27,8 @@ def upload_file(idnote, filename, imagesonly):
 
     cl = request.content_length
     if cl is not None and imagesonly and cl > 1 * 1024 * 1024:
-        raise ('Request Entity Too Large', 413)
+        headers = {'content-type': 'text/html'}
+        raise urllib2.HTTPError(request.url, 413, 'Request Entity Too Large', headers, None)
 
     try:
         attachments = UploadSet(str(idnote), IMAGES if imagesonly else AllExcept(EXECUTABLES))
