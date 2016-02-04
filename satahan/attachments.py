@@ -2,7 +2,7 @@ __author__ = 'Chamit'
 
 from flask import request, render_template, redirect, send_from_directory, flash, jsonify, send_file, make_response, url_for
 from satahan import app, back
-from flask.ext.uploads import UploadSet, configure_uploads, AllExcept
+from flask.ext.uploads import UploadSet, configure_uploads, AllExcept, IMAGES, EXECUTABLES
 from model import Note, Attachment
 from flask_user import login_required
 from werkzeug import secure_filename
@@ -12,7 +12,7 @@ from database import db_session
 from werkzeug.exceptions import RequestEntityTooLarge
 
 @login_required
-def upload_file(idnote, filename):
+def upload_file(idnote, filename, imagesonly):
     note = Note.query.filter_by(idnote=idnote).first()
     if not note:
         return False, 'Note could not be found.', ''
@@ -24,8 +24,12 @@ def upload_file(idnote, filename):
     if attachment:
         return False, 'Attachment already exists.', ''
 
+    cl = request.content_length
+    if cl is not None and imagesonly and cl > 1 * 1024 * 1024:
+        raise RequestEntityTooLarge()
+
     try:
-        attachments = UploadSet(str(idnote), AllExcept(('exe', 'so', 'dll')))
+        attachments = UploadSet(str(idnote), IMAGES if imagesonly else AllExcept(EXECUTABLES))
         configure_uploads(app, (attachments))
 
         filename = attachments.save(filename)
@@ -46,7 +50,7 @@ def uploadimage(idnote):
     callback = request.args.get("CKEditorFuncNum")
     if request.method == 'POST' and 'upload' in request.files:
         filename=request.files['upload']
-        ret, error, filename = upload_file(idnote, filename)
+        ret, error, filename = upload_file(idnote, filename, True)
         #if file saved successfully, commit it to db as well.
         if ret:
             db_session.commit()
@@ -69,11 +73,12 @@ def uploadimage_json(idnote):
     try:
         request.files
     except RequestEntityTooLarge:
-        error = 'File too large. Satahan only supports files up to 1MB.'
+        error = 'File too large. Satahan only supports files up to 1MB for drag and drop images and 16MB for other\
+         attachments.'
 
     if len(error) == 0 and request.method == 'POST' and 'upload' in request.files:
         filename=request.files['upload']
-        ret, error, filename = upload_file(idnote, filename)
+        ret, error, filename = upload_file(idnote, filename, True)
         #if file saved successfully, commit it to db as well.
         if ret:
             db_session.commit()
@@ -112,7 +117,7 @@ def upload(idnote):
     """Upload a new file."""
     if request.method == 'POST':
         filename=request.files['attachment']
-        ret, error, filename = upload_file(idnote, filename)
+        ret, error, filename = upload_file(idnote, filename, False)
         if ret:
             #if file saved successfully, commit it to db as well.
             db_session.commit()
@@ -123,7 +128,8 @@ def upload(idnote):
 
 @app.errorhandler(413)
 def error413(e):
-    flash('File too large. Satahan only supports files up to 1MB.', 'error')
+    flash('File too large. Satahan only supports files up to 1MB for drag and drop images and 16MB for other\
+     attachments.', 'error')
     return back.goback()
 
 @app.route('/delete_attachment/<int:idnote>/<path:filename>', methods=['GET', 'POST'])
