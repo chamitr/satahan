@@ -52,6 +52,14 @@ body           { background: #F5F5F5;/*#F5FEFF;*/ }
     background: white;
 }
 
+
+.fullnote iframe {
+    position: relative;
+    max-width:600px;
+    max-height:450px;
+    width: 100% !important;
+}
+
 .newNoteTitle {
     width:100%;
     border-radius: 4px;
@@ -77,6 +85,13 @@ body           { background: #F5F5F5;/*#F5FEFF;*/ }
 
 .notetext {
     color: #333; margin: 0; font-size: 1.0em;
+}
+
+.notetext iframe {
+    position: relative;
+    max-width:600px;
+    max-height:450px;
+    width: 100% !important;
 }
 
 .comment {
@@ -181,6 +196,15 @@ input[type=checkbox].glyphicon{
 {
     color: white !important;
 }
+
+img
+{
+    max-height:100%;
+    max-width:100%;
+    width: auto;
+    height: auto;
+}
+
 /*
 input[type="checkbox"] {
     display:none;
