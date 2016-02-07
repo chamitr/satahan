@@ -3,6 +3,7 @@
 {% block header %}
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <title>{{ full_note.title|safe }}</title>
 {% endblock %}
 
 {% block main %}
@@ -19,7 +20,7 @@
     {% for user in full_note.user %}
     <!--http://apidock.com/ruby/DateTime/strftime-->
     <p class = "username">{{user.username|safe}} <span class="createdatetime"> -
-        {{ full_note.createdatetime|timesince }}</span></p>
+        {% if note.createdatetime %}{{ full_note.createdatetime|timesince }}{% endif %}</span></p>
     {% endfor %}
     <div class="fullnote">
     <h2>{{ full_note.title|safe }}</h2>
