@@ -1,5 +1,11 @@
 {% extends 'base.html' %}
 
+{% if current_user_taggroup %}
+    {% block header %}
+    <title>{{current_user_taggroup.taggroupname}}</title>
+    {% endblock %}
+{% endif %}
+
 {% block extend_tags %}
     {% include 'tag_ctrl.html' %}
     <p></p>
