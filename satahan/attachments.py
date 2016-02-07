@@ -25,8 +25,8 @@ def upload_file(idnote, filename, imagesonly):
         return False, 'Attachment already exists.', ''
 
     cl = request.content_length
-    if cl is not None and imagesonly and cl > 1 * 1024 * 1024:
-        return False, 'File too large. Satahan only supports files up to 1MB for drag and drop images and 16MB \
+    if cl is not None and imagesonly and cl > 2 * 1024 * 1024:
+        return False, 'File too large. Satahan only supports files up to 2MB for drag and drop images and 16MB \
           for other attachments.', ''
 
     try:
@@ -74,7 +74,7 @@ def uploadimage_json(idnote):
     try:
         request.files
     except RequestEntityTooLarge:
-        error = 'File too large. Satahan only supports files up to 1MB for drag and drop images and 16MB for other\
+        error = 'File too large. Satahan only supports files up to 2MB for drag and drop images and 16MB for other\
          attachments.'
 
     if len(error) == 0 and request.method == 'POST' and 'upload' in request.files:
@@ -129,7 +129,7 @@ def upload(idnote):
 
 @app.errorhandler(413)
 def error413(e):
-    flash('File too large. Satahan only supports files up to 1MB for drag and drop images and 16MB for other\
+    flash('File too large. Satahan only supports files up to 2MB for drag and drop images and 16MB for other\
      attachments.', 'error')
     return back.goback()
 
