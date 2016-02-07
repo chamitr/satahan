@@ -23,7 +23,7 @@ h2              { font-size: 1.2em; }
                   margin-left: 50px; margin-right:50px;
                   }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 1000px) {
 .page           { width: 100% - 5px;
                   background: #F5F5F5;/*#F5FEFF;*/
                   min-height: 5px;
