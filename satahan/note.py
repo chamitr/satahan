@@ -104,7 +104,7 @@ def add_note(published):
         publishing = request.args.get('publishing', None)
         publishing= True if publishing is not None else False
         if publishing:
-            flash("Select tags for your note above", "info")
+            flash("Select tags for your note above and click the Share button below.", "info")
         if draft_note:
             checked_tags = []
             #If draft note is found, display it. However, if the user has a selection, it should get priority.
