@@ -9,6 +9,7 @@ from admin_points import AdminPoints
 from sets import Set
 from sqlalchemy import and_, select, union, func, desc
 from database import db_session
+import datetime
 
 per_page = 10
 
@@ -164,6 +165,8 @@ def add_note(published):
         return redirect('/manage_group?publishing')
 
     #add note to db
+    if published == 1:
+        newnote.createdatetime = datetime.datetime.utcnow()
     db_session.add(newnote)
     #link tags to note
     if tags:
