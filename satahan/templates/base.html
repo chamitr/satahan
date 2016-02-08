@@ -16,8 +16,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {% block header %}
     <title>Share with Satahan</title>
-    {% endblock %}
     <meta name="description" content="Satahan is a simple content sharing website with easy to use tag based search." /><!--formatted-->
+    {% endblock %}
   </head>
 
   <body>
@@ -50,7 +50,8 @@
                     <li><a href="{{ url_for('user.profile') }}"><span class="glyphicon glyphicon-user"></span>  User profile</a></li>
                     <li><a href="{{ url_for('user.logout') }}"><span class="glyphicon glyphicon-log-out"></span> Sign out</a></li>
                 {% else %}
-                    <li><a class="btn btn-success black_font" href="{{ url_for('user.register') }}"><span class="glyphicon glyphicon-plus"></span> Register and write your own</a></li>
+                    <li><a style="padding-top:3px;padding-bottom:3px;" href="{{ url_for('facebook_login') }}" ><img src="{{ url_for('static', filename='facebooklogin.png') }}"></a></li>
+                    <li><a href="{{ url_for('user.register') }}"><span class="glyphicon glyphicon-plus"></span> Register</a></li>
                     <li><a href="{{ url_for('user.login') }}" ><span class="glyphicon glyphicon-log-in"></span> Sign in</a></li>
                 {% endif %}
               </ul>

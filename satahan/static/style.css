@@ -197,15 +197,6 @@ input[type=checkbox].glyphicon{
     display: inline;"
 }
 
-.black_font
-{
-    color: black !important;
-}
-.black_font:hover
-{
-    color: white !important;
-}
-
 img
 {
     max-height:100%;
