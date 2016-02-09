@@ -48,8 +48,9 @@ def tag_manage_view(tg):
         current_user_taggroup = TagGroup.query.filter_by(idtaggroup=tg).first()
     if current_user_taggroup:
         tgs = Tag.query.filter_by(idtaggroup=tg).all()
-        tags_in_use = db_session.query(notetags.c.idtag).filter(notetags.c.idtag.in_(t.idtag for t in tgs)).all()
-        tags_in_use = [t[0] for t in tags_in_use]
+        if tgs and len(tgs) > 0:
+            tags_in_use = db_session.query(notetags.c.idtag).filter(notetags.c.idtag.in_(t.idtag for t in tgs)).all()
+            tags_in_use = [t[0] for t in tags_in_use]
     elif tg is not None:
         flash('Could not find topic.', 'error')
         return back.go_back()
