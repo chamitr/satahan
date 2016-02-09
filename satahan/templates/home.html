@@ -3,6 +3,9 @@
 {% if current_user_taggroup %}
     {% block header %}
     <title>{{current_user_taggroup.taggroupname}}</title>
+    {% if notes|length > 0 %}
+        <meta name="description" content="<h2>{{ notes[0].title|safe }}</h2><p></p><p>{{ notes[0].text|safe }}</p>" />
+    {% endif %}
     {% endblock %}
 {% endif %}
 
