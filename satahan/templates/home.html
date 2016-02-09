@@ -4,7 +4,7 @@
     {% block header %}
     <title>{{current_user_taggroup.taggroupname}}</title>
     {% if notes|length > 0 %}
-        <meta name="description" content="{{ notes[0].title|safe }}" />
+        <meta name="description" content="{{ notes[0].title|safe|title }}: {{ notes[0].text|striptags }}" />
     {% endif %}
     {% endblock %}
 {% endif %}
@@ -45,7 +45,7 @@
             <div data = {{ note.idnote }} class = "note" ng-click="showNote( {{ note.idnote }} )">
                 <p class = "username">{{note.username}} <span class="createdatetime">  {% if note.createdatetime %}{{ note.createdatetime|timesince }}{% endif %}</span></p>
                 <div style="padding-top: 7px; padding-bottom: 7px">
-                    <h2>{{ note.title|safe }}</h2>
+                    <h2>{{ note.title|safe|title }}</h2>
                     <p></p>
                     <span class="notetext">{{ note.text|safe }}</span>
                 </div>
