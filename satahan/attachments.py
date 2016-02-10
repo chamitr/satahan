@@ -55,7 +55,10 @@ def uploadimage(idnote):
         #if file saved successfully, commit it to db as well.
         if ret:
             db_session.commit()
-            url = '/imgs/'+ str(idnote) + "/" + filename
+            if socket.gethostname() == 'BFF':
+                url = '/images/'+ str(idnote) + "/" + filename
+            else:
+                url = url_for('static', filename='uploads/'+ str(idnote) + '/' + filename)
     else:
         error = 'post error'
     res = """<script type="text/javascript">
@@ -83,7 +86,10 @@ def uploadimage_json(idnote):
         #if file saved successfully, commit it to db as well.
         if ret:
             db_session.commit()
-            url = '/imgs/'+ str(idnote) + "/" + filename
+            if socket.gethostname() == 'BFF':
+                url = '/images/'+ str(idnote) + "/" + filename
+            else:
+                url = url_for('static', filename='uploads/'+ str(idnote) + '/' + filename)
     else:
         error = error if len(error) > 0 else 'post error'
 
@@ -97,7 +103,7 @@ def uploadimage_json(idnote):
     }
     return jsonify(res)
 
-@app.route('/imgs/<int:idnote>/<path:filename>')
+@app.route('/images/<int:idnote>/<path:filename>')
 def images(idnote, filename):
     fullpath = os.path.join(ConfigClass.UPLOADS_DEFAULT_DEST+'/' + str(idnote), filename)
     return send_file(fullpath,
