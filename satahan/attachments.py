@@ -10,7 +10,6 @@ import os
 from configclass import ConfigClass
 from database import db_session
 from werkzeug.exceptions import RequestEntityTooLarge
-import socket
 
 @login_required
 def upload_file(idnote, filename, imagesonly):
@@ -56,10 +55,7 @@ def uploadimage(idnote):
         #if file saved successfully, commit it to db as well.
         if ret:
             db_session.commit()
-            if socket.gethostname() == 'BFF':
-                url = '/images/'+ str(idnote) + "/" + filename
-            else:
-                url = '/imgs/'+ str(idnote) + "/" + filename
+            url = '/images/'+ str(idnote) + "/" + filename
     else:
         error = 'post error'
     res = """<script type="text/javascript">
@@ -87,10 +83,7 @@ def uploadimage_json(idnote):
         #if file saved successfully, commit it to db as well.
         if ret:
             db_session.commit()
-            if socket.gethostname() == 'BFF':
-                url = '/images/'+ str(idnote) + "/" + filename
-            else:
-                url = '/imgs/'+ str(idnote) + "/" + filename
+            url = '/images/'+ str(idnote) + "/" + filename
     else:
         error = error if len(error) > 0 else 'post error'
 
