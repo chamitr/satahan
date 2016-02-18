@@ -51,13 +51,11 @@
                     <li><a href="{{ url_for('manage_group') }}"><span class="glyphicon glyphicon-tags"></span> Topics</a></li>
                     {% block extramenu %}
                     {% endblock %}
-                {% else %}
-                    <li><a href="{{ url_for('view_group') }}"><span class="glyphicon glyphicon-tags"></span> Topics</a></li>
                 {% endif %}
               </ul>
               <ul class="nav navbar-nav navbar-right">
-                <li><a href="{{ url_for('about') }}"><span class="glyphicon glyphicon-info-sign"></span>  About</a></li>
                 {% if current_user.is_authenticated() %}
+                    <li><a href="{{ url_for('about') }}"><span class="glyphicon glyphicon-info-sign"></span>  About</a></li>
                     <li><a href="{{ url_for('user.profile') }}"><span class="glyphicon glyphicon-user"></span>  User profile</a></li>
                     <li><a href="{{ url_for('user.logout') }}"><span class="glyphicon glyphicon-log-out"></span> Sign out</a></li>
                 {% else %}

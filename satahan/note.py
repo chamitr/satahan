@@ -26,6 +26,7 @@ def get_notes_in_group_stmt(returned_fields, where_clause):
 
 @app.route('/')
 @back.anchor
+#@login_required
 def query_note():
     idtaggroup = request.args.get('tg', None)
     if not current_user.is_authenticated() and not idtaggroup:
@@ -189,6 +190,7 @@ def add_note(published):
 
 @app.route('/get_note/<int:idnote>', methods=['GET'])
 @back.anchor
+@login_required
 def get_note(idnote):
     note = Note.query.filter_by(idnote=idnote, published = True).first()
     if not note:
@@ -288,5 +290,6 @@ def delete_draft():
     return redirect('/add_note/0')
 
 @app.route('/about', methods=['GET'])
+@login_required
 def about():
     return render_template('about.html')
