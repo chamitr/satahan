@@ -5,7 +5,7 @@ function init_ckeditor() {
     if (notetext != null)
     {
         CKEDITOR.replace( 'notetext', {
-        extraPlugins: 'uploadimage',
+        extraPlugins: 'imageresize',
         filebrowserImageUploadUrl: '/uploadimage/' + noteid.value + "/",
         uploadUrl: '/uploadimage_json/' + noteid.value + "/",
         allowedContent: true

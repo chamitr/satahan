@@ -10,6 +10,8 @@ import os
 from configclass import ConfigClass
 from database import db_session
 from werkzeug.exceptions import RequestEntityTooLarge
+from PIL import Image
+from cStringIO import StringIO
 
 @login_required
 def upload_file(idnote, filename, imagesonly):
@@ -24,14 +26,20 @@ def upload_file(idnote, filename, imagesonly):
     if attachment:
         return False, 'Attachment already exists.', ''
 
-    cl = request.content_length
-    if cl is not None and imagesonly and cl > 1 * 1024 * 1024:
-        return False, 'File too large. Satahan only supports files up to 1MB for drag and drop images and 16MB \
-          for other attachments.', ''
-
     try:
         attachments = UploadSet(str(idnote), IMAGES if imagesonly else AllExcept(EXECUTABLES))
         configure_uploads(app, (attachments))
+
+        image = Image.open(filename.stream)
+        maxWidthOrHeight = 1024
+        if (image.size[0] > maxWidthOrHeight or image.size[1] > maxWidthOrHeight):
+            maxSize = (maxWidthOrHeight, maxWidthOrHeight)
+            image.thumbnail(maxSize, Image.ANTIALIAS)
+            thumb_io = StringIO()
+            file_name, file_extension = os.path.splitext(filename.filename)
+            image.save(thumb_io, format='JPEG')
+            thumb_io.seek(0)
+            filename.stream = thumb_io
 
         filename = attachments.save(filename)
 
@@ -74,8 +82,7 @@ def uploadimage_json(idnote):
     try:
         request.files
     except RequestEntityTooLarge:
-        error = 'File too large. Satahan only supports files up to 1MB for drag and drop images and 16MB for other\
-         attachments.'
+        error = 'File too large. Maximum file size allowed is 8MB.'
 
     if len(error) == 0 and request.method == 'POST' and 'upload' in request.files:
         filename=request.files['upload']
@@ -129,8 +136,7 @@ def upload(idnote):
 
 @app.errorhandler(413)
 def error413(e):
-    flash('File too large. Satahan only supports files up to 1MB for drag and drop images and 16MB for other\
-     attachments.', 'error')
+    flash('File too large. Maximum file size allowed is 8MB.', 'error')
     return back.goback()
 
 @app.route('/delete_attachment/<int:idnote>/<path:filename>', methods=['GET', 'POST'])

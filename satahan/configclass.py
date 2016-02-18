@@ -35,7 +35,7 @@ class ConfigClass(object):
     else:
         UPLOADS_DEFAULT_DEST =      '/var/www/uploads'
         UPLOADS_DEFAULT_URL =       'http://localhost:5001/'
-    MAX_CONTENT_LENGTH = 16 * 1024 * 1024
+    MAX_CONTENT_LENGTH = 8 * 1024 * 1024
 
     # Flask-OAuth attributes
     FACEBOOK_APP_ID = '1684359128476938'
