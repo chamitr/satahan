@@ -5,13 +5,13 @@
  */
 CKEDITOR.plugins.add("imageresize", {
     init : function(editor){
-		
+
 		/* Browser Support */
 		if(!this.support()) return;
-		
+
 		/* Config */
 		this.getConfig();
-		
+
 		/* Resize images on paste */
 		var t = this;
 		editor.on("instanceReady", function(){
@@ -31,7 +31,7 @@ CKEDITOR.plugins.add("imageresize", {
 			});
 		});
 	},
-	
+
 	/*
 	 * Resize all images in a node
 	 * editor: CKEDITOR Instance
@@ -40,22 +40,22 @@ CKEDITOR.plugins.add("imageresize", {
 	 * height: (integer) max height of the image
 	 */
 	resizeAll : function(editor, parent, width, height){
-		
+
 		/* Browser Support */
 		if(!this.support()) return;
-		
+
 		/* Parent Node */
 		if(!parent) parent = editor.document;
 		if(!parent) return;
-		
+
 		/* Width and Height */
 		if(!width) width = this.config.maxWidth;
 		if(!height) height = this.config.maxHeight;
 		//console.log(width+"x"+height);
-		
+
 		/* Parent Node is a CKEditor DOM Node */
 		if("find" in parent && typeof(parent.find) == "function") {} else parent = new CKEDITOR.dom.node(parent);
-		
+
 		/* Find images and resize */
 		if(parent && "find" in parent && typeof(parent.find) == "function") {
 			var img = parent.find("img"), w, h, s, item, index;
@@ -66,9 +66,9 @@ CKEDITOR.plugins.add("imageresize", {
 				if(s && /*s.indexOf("data:") === 0 &&*/ (w > width || h > height)) this.resize(editor, item, width, height);
 			}
 		}
-		
+
 	},
-	
+
 	/*
 	 * Resize one image
 	 * editor: CKEDITOR Instance
@@ -77,7 +77,7 @@ CKEDITOR.plugins.add("imageresize", {
 	 * height: (integer) max height of the image
 	 */
 	resize : function(editor, imageElement, width, height){
-		
+
 		/* Browser Support */
         if(!this.support() || !imageElement) return;
 
@@ -93,7 +93,7 @@ CKEDITOR.plugins.add("imageresize", {
 		/* Error Function */
         img.onerror = function() { this[ns] = null; delete this[ns]; };
         img.onabort = function() { this[ns] = null; delete this[ns]; };
-		
+
 		/* Resize function when image is loaded */
         img.onload = function() {
 
@@ -129,16 +129,16 @@ CKEDITOR.plugins.add("imageresize", {
 					editor.getSelection().scrollIntoView();
 				} catch(e) {}
 			}
-			
+
             this[ns] = cv = ct = null;
             delete this[ns];
         };
-		
+
 		/* Load image */
         img.src = imageElement.getAttribute("src");
-		
+
 	},
-	
+
 	/* Browser Support */
 	supportResult : null,
 	support : function(){
@@ -154,7 +154,7 @@ CKEDITOR.plugins.add("imageresize", {
         }
         return this.supportResult;
 	},
-	
+
 	/* Config */
 	config : {
 		 "maxWidth" 	: 1024
@@ -176,5 +176,5 @@ CKEDITOR.plugins.add("imageresize", {
 			}
 		}
 	}
-	
+
 });
