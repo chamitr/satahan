@@ -47,7 +47,7 @@ def upload_file(idnote, filename, imagesonly):
         db_session.add(attachment)
         note.attachment_count += 1
 
-        return True, '', filename, image.width, image.height
+        return True, '', filename, image.size[0], image.size[1]
     except Exception as e:
         return False, str(e), '', 0, 0
 
