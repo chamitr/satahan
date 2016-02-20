@@ -17,14 +17,14 @@ from cStringIO import StringIO
 def upload_file(idnote, filename, imagesonly):
     note = Note.query.filter_by(idnote=idnote).first()
     if not note:
-        return False, 'Note could not be found.', ''
+        return False, 'Note could not be found.', '', 0, 0
 
     if not secure_filename(filename.filename):
-        return False, 'File name is not secure.', ''
+        return False, 'File name is not secure.', '', 0, 0
 
     attachment = Attachment.query.filter_by(idnote=idnote,filename=filename.filename).first()
     if attachment:
-        return False, 'Attachment already exists.', ''
+        return False, 'Attachment already exists.', '', 0, 0
 
     try:
         attachments = UploadSet(str(idnote), IMAGES if imagesonly else AllExcept(EXECUTABLES))
@@ -47,9 +47,9 @@ def upload_file(idnote, filename, imagesonly):
         db_session.add(attachment)
         note.attachment_count += 1
 
-        return True, '', filename
+        return True, '', filename, image.width, image.height
     except Exception as e:
-        return False, str(e), ''
+        return False, str(e), '', 0, 0
 
 @app.route('/uploadimage/<int:idnote>/', methods=['POST', 'OPTIONS'])
 @login_required
@@ -59,7 +59,7 @@ def uploadimage(idnote):
     callback = request.args.get("CKEditorFuncNum")
     if request.method == 'POST' and 'upload' in request.files:
         filename=request.files['upload']
-        ret, error, filename = upload_file(idnote, filename, True)
+        ret, error, filename, w, h = upload_file(idnote, filename, True)
         #if file saved successfully, commit it to db as well.
         if ret:
             db_session.commit()
@@ -79,6 +79,8 @@ def uploadimage_json(idnote):
     error = ''
     url = ''
     filename = ''
+    w = 0
+    h = 0
     try:
         request.files
     except RequestEntityTooLarge:
@@ -86,7 +88,7 @@ def uploadimage_json(idnote):
 
     if len(error) == 0 and request.method == 'POST' and 'upload' in request.files:
         filename=request.files['upload']
-        ret, error, filename = upload_file(idnote, filename, True)
+        ret, error, filename, w, h = upload_file(idnote, filename, True)
         #if file saved successfully, commit it to db as well.
         if ret:
             db_session.commit()
@@ -98,6 +100,8 @@ def uploadimage_json(idnote):
         "uploaded": 0 if len(error) > 0 else 1,
         "fileName": filename,
         "url": url,
+        "width": w,
+        "height": h,
         "error": {
             "message": error
         }
@@ -125,7 +129,7 @@ def upload(idnote):
     """Upload a new file."""
     if request.method == 'POST':
         filename=request.files['attachment']
-        ret, error, filename = upload_file(idnote, filename, False)
+        ret, error, filename, w, h = upload_file(idnote, filename, False)
         if ret:
             #if file saved successfully, commit it to db as well.
             db_session.commit()

@@ -4,13 +4,57 @@ function init_ckeditor() {
     var noteid = document.getElementById('noteid');
     if (notetext != null)
     {
-        CKEDITOR.replace( 'notetext', {
+        editor = CKEDITOR.replace( 'notetext', {
         extraPlugins: 'imageresize',
         filebrowserImageUploadUrl: '/uploadimage/' + noteid.value + "/",
         uploadUrl: '/uploadimage_json/' + noteid.value + "/",
         allowedContent: true
         });
+
+        editor.on( 'fileUploadResponse', function( evt ) {
+            var fileLoader = evt.data.fileLoader,
+                xhr = fileLoader.xhr,
+                data = evt.data;
+            try {
+                var response = JSON.parse( xhr.responseText );
+
+                // Error message does not need to mean that upload finished unsuccessfully.
+                // It could mean that ex. file name was changes during upload due to naming collision.
+                if ( response.error && response.error.message ) {
+                    data.message = response.error.message;
+                }
+
+                // But !uploaded means error.
+                if ( !response.uploaded ) {
+                    evt.cancel();
+                } else {
+                    data.fileName = response.fileName;
+                    data.url = response.url;
+                    data.width = response.width;
+                    data.height = response.height;
+
+                    // Do not call the default listener.
+                    evt.stop();
+                }
+            } catch ( err ) {
+                // Response parsing error.
+                data.message = fileLoader.lang.filetools.responseError;
+                window.console && window.console.log( xhr.responseText );
+
+                evt.cancel();
+            }
+        });
+
+        editor.on( 'instanceReady', function() {
+            editor.widgets.registered.uploadimage.onUploaded = function( upload ) {
+                var response = JSON.parse( upload.xhr.responseText );
+                this.replaceWith( '<img src="' + upload.url + '" ' +
+                    'width="' + response.width + '" ' +
+                    'height="' + response.height + '">' );
+            }
+        });
     }
+
 }
 
 init_ckeditor();
