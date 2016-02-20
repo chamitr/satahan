@@ -109,6 +109,7 @@ def uploadimage_json(idnote):
     return jsonify(res)
 
 @app.route('/imgs/<int:idnote>/<path:filename>')
+@login_required
 def images(idnote, filename):
     fullpath = os.path.join(ConfigClass.UPLOADS_DEFAULT_DEST+'/' + str(idnote), filename)
     return send_file(fullpath,
@@ -116,6 +117,7 @@ def images(idnote, filename):
                  mimetype='image/png')
 
 @app.route('/download/<int:idnote>/<path:filename>')
+@login_required
 def download(idnote, filename):
     attachment = Attachment.query.filter_by(idnote=idnote,filename=filename).first()
     if not attachment:
