@@ -1,6 +1,6 @@
 /*
  * ImageResize Plugin for CKEditor (http://github.com/nmmf/imageresize)
- * Created by ALL-INKL.COM - Neue Medien Münnich - 18. Feb 2014
+ * Created by ALL-INKL.COM - Neue Medien MÃ¼nnich - 18. Feb 2014
  * Licensed under the terms of GPL, LGPL and MPL licenses.
  */
 CKEDITOR.plugins.add("imageresize", {
