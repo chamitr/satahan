@@ -29,7 +29,7 @@ def get_notes_in_group_stmt(returned_fields, where_clause):
 #@login_required
 def query_note():
     idtaggroup = request.args.get('tg', None)
-    if not current_user.is_authenticated() and not idtaggroup:
+    if not current_user.is_authenticated() or not idtaggroup:
         return render_template('index.html')
 
     #get query tags
