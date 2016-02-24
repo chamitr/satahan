@@ -26,10 +26,15 @@ def get_notes_in_group_stmt(returned_fields, where_clause):
 
 @app.route('/')
 @back.anchor
-#@login_required
+def index():
+    return render_template('index.html')
+
+@app.route('/query_note')
+@back.anchor
+@login_required
 def query_note():
     idtaggroup = request.args.get('tg', None)
-    if not current_user.is_authenticated() or not idtaggroup:
+    if not idtaggroup:
         return render_template('index.html')
 
     #get query tags
@@ -41,11 +46,7 @@ def query_note():
         page = 1
     #get tags
 
-    usertaggroup = None
-    if current_user.is_authenticated():
-        usertaggroup = get_current_user_taggroup()
-    else:
-        usertaggroup = TagGroup.query.filter_by(idtaggroup=idtaggroup).first()
+    usertaggroup = get_current_user_taggroup()
     if not usertaggroup:
         return redirect('/about')
 
@@ -72,17 +73,13 @@ def query_note():
     pagination = Pagination(page=page, total=note_total, record_name='note', per_page = per_page,\
                             css_framework='foundation')
     #render
-    usertaggroups = None
-    if current_user.is_authenticated():
-        usertaggroups = current_user.usertaggroups
+    usertaggroups = current_user.usertaggroups
     favourite = True
     if not usertaggroups or not usertaggroups.filter_by(idtaggroup = usertaggroup.idtaggroup).first():
         usertaggroups = [usertaggroup]
         favourite = False #Not one of user's favourite tags
     defaut_tag_group=False
-    usersettings = None
-    if current_user.is_authenticated():
-        usersettings = UserSettings.query.filter_by(iduser=current_user.id).first()
+    usersettings = UserSettings.query.filter_by(iduser=current_user.id).first()
     if usersettings and usersettings.idtaggroup_def == usertaggroup.idtaggroup:
         defaut_tag_group=True
     tagpages = Set()
@@ -198,7 +195,7 @@ def get_note(idnote):
         note = Note.query.filter_by(idnote=idnote, published = False, iduser = current_user.id).first()
     if not note:
         flash('Could not fined note', 'error')
-        return redirect('/')
+        return redirect('/query_note')
 
     comments = Comment.query.order_by(Comment.idcomment.desc()).filter_by(idnote=idnote)
     attachments = get_all_attachments(idnote=idnote)
@@ -223,7 +220,7 @@ def delete_note(idnote):
     note_query.tags = []
     Note.query.filter_by(idnote=idnote).delete()
     db_session.commit()
-    return redirect('/')
+    return redirect('/query_note')
 
 @app.route('/edit_note/<int:idnote>', methods=['GET', 'POST'])
 @back.anchor
@@ -252,7 +249,7 @@ def edit_note(idnote):
     note_query = Note.query.filter_by(idnote=idnote, iduser=current_user.id).first()
     if not note_query:
         flash("Please select a Note that belongs to you.", "error")
-        return redirect('/')
+        return redirect('/query_note')
     else:
         tags = get_note_tags(request.form)
         if not tags:
@@ -275,7 +272,7 @@ def edit_note(idnote):
         note_query.title=request.form['title']
         note_query.text=request.form['notetext']
         db_session.commit()
-        return redirect('/')
+        return redirect('/query_note')
 
 @app.route('/delete_draft', methods=['POST'])
 @login_required

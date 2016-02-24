@@ -69,7 +69,7 @@ def manage_group():
     #If there was not favourites and they were added for the first time, this could be a new user.
     #Redirect to home page.
     if before_count == 0 and len(manage_groups) > 0 :
-        return redirect('/')
+        return redirect('/query_note')
 
     return get_manage_group_view()
 

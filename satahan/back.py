@@ -29,7 +29,7 @@ class back(object):
         if url:
             return redirect(url)
         else:
-            return redirect("/")
+            return redirect("/query_note")
 
 back = back()
 anchor = back.anchor

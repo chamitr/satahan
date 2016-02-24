@@ -73,7 +73,7 @@
                             {% if publishing %}
                                 <a href="{{ url_for('manage_tags', tg = taggroup.idtaggroup ) }}&publishing"> {{ taggroup.taggroupname }}</a>
                             {% else %}
-                                <a href="\?tg={{ taggroup.idtaggroup }}"> {{ taggroup.taggroupname }}</a>
+                                <a href="\query_note?tg={{ taggroup.idtaggroup }}"> {{ taggroup.taggroupname }}</a>
                             {% endif %}
                         </td>
                     {% endfor %}

@@ -73,4 +73,4 @@ def upload_notes(idtaggroup):
     os.remove(os.path.join(filepath, filename.filename))
 
     flash('Note data upload successful.', 'success')
-    return redirect('/')
+    return redirect('/query_note')

@@ -33,6 +33,7 @@ def facebook_login():
 @app.route('/login/authorized')
 @facebook.authorized_handler
 def facebook_authorized(resp):
+    next_url = request.args.get('next') or '/'
     if resp is None:
         return 'Access denied: reason=%s error=%s' % (
             request.args['error_reason'],
@@ -48,4 +49,4 @@ def facebook_authorized(resp):
         db_session.commit()
     login_user(user, True)
     flash('You have signed in successfully.', 'success')
-    return redirect('/')
+    return redirect(next_url)
