@@ -1,0 +1,1272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="468c1538-8e93-40d3-8b18-83f3dcea38ff" name="Default" comment="" />
+    <ignored path="satahan.iws" />
+    <ignored path=".idea/workspace.xml" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="satahan" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="satahan.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/satahan/static/scripts/satahan.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="54" column="11" selection-start-line="54" selection-start-column="11" selection-end-line="54" selection-end-column="11" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="note.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/satahan/note.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-5.0">
+              <caret line="31" column="23" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="23" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="back.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/satahan/back.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.8756661">
+              <caret line="31" column="40" selection-start-line="31" selection-start-column="40" selection-end-line="31" selection-end-column="40" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="manage_group.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/satahan/templates/manage_group.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-6.269231">
+              <caret line="75" column="52" selection-start-line="75" selection-start-column="52" selection-end-line="75" selection-end-column="52" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="view_group.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/satahan/templates/view_group.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-10.461538">
+              <caret line="16" column="44" selection-start-line="16" selection-start-column="44" selection-end-line="16" selection-end-column="44" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="upload.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/satahan/upload.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-16.52">
+              <caret line="75" column="32" selection-start-line="75" selection-start-column="32" selection-end-line="75" selection-end-column="32" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="facebook.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/satahan/facebook.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-20.4">
+              <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="group.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/satahan/group.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-6.84">
+              <caret line="71" column="36" selection-start-line="71" selection-start-column="36" selection-end-line="71" selection-end-column="36" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="base.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/satahan/templates/base.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-2.6153846">
+              <caret line="57" column="4" selection-start-line="57" selection-start-column="4" selection-end-line="57" selection-end-column="4" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="attachments.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/satahan/attachments.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="120" column="0" selection-start-line="120" selection-start-column="0" selection-end-line="120" selection-end-column="0" />
+              <folding>
+                <element signature="e#23#147#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Html5" />
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/satahan/satahan.py" />
+        <option value="$PROJECT_DIR$/satahan/templates/comment.py" />
+        <option value="$PROJECT_DIR$/satahan/user.py" />
+        <option value="$PROJECT_DIR$/satahan/templates/join_group.html" />
+        <option value="$PROJECT_DIR$/satahan/timesince.py" />
+        <option value="$PROJECT_DIR$/satahan/templates/tag_delete_conf_dlg.html" />
+        <option value="$PROJECT_DIR$/satahan/templates/tag_dlgs.html" />
+        <option value="$PROJECT_DIR$/satahan/templates/taggroup_dlgs.html" />
+        <option value="$PROJECT_DIR$/satahan/templates/tag_edit_dlg.html" />
+        <option value="$PROJECT_DIR$/satahan/comment.py" />
+        <option value="$PROJECT_DIR$/satahan/admin_points.py" />
+        <option value="$PROJECT_DIR$/runserver.py" />
+        <option value="$PROJECT_DIR$/satahan/SQLAlchemyAdapter.py" />
+        <option value="$PROJECT_DIR$/satahan/user_model.py" />
+        <option value="$PROJECT_DIR$/satahan/database.py" />
+        <option value="$PROJECT_DIR$/satahan/__init__.py" />
+        <option value="$PROJECT_DIR$/satahan/templates/flask_user/user_profile.html" />
+        <option value="$PROJECT_DIR$/satahan/templates/flask_user/login.html" />
+        <option value="$PROJECT_DIR$/satahan/templates/flask_user/register.html" />
+        <option value="$PROJECT_DIR$/satahan/templates/tag_ctrl.html" />
+        <option value="$PROJECT_DIR$/satahan/static/ckeditor/plugins/locationmap/dialogs/locationmap.js" />
+        <option value="$PROJECT_DIR$/satahan/static/ckeditor/plugins/locationmap/googlemap.html" />
+        <option value="$PROJECT_DIR$/satahan/static/ckeditor/samples/js/sample.js" />
+        <option value="$PROJECT_DIR$/satahan/templates/edit_note.html" />
+        <option value="$PROJECT_DIR$/satahan/templates/taggroup_edit_dlg.html" />
+        <option value="$PROJECT_DIR$/satahan/templates/add_note.html" />
+        <option value="$PROJECT_DIR$/satahan/tag_helper.py" />
+        <option value="$PROJECT_DIR$/satahan/templates/manage_tags.html" />
+        <option value="$PROJECT_DIR$/satahan/model.py" />
+        <option value="$PROJECT_DIR$/satahan/static/style.css" />
+        <option value="$PROJECT_DIR$/satahan/tag.py" />
+        <option value="$PROJECT_DIR$/satahan/templates/home.html" />
+        <option value="$PROJECT_DIR$/satahan/templates/about.html" />
+        <option value="$PROJECT_DIR$/satahan/static/ckeditor/build-config.js" />
+        <option value="$PROJECT_DIR$/satahan/static/ckeditor/ckeditor.js" />
+        <option value="$PROJECT_DIR$/satahan/static/ckeditor/plugins/imageresizeandupload/plugin.js" />
+        <option value="$PROJECT_DIR$/satahan/templates/note_full.html" />
+        <option value="$PROJECT_DIR$/satahan/templates/manage_attachments.html" />
+        <option value="$PROJECT_DIR$/satahan/configclass.py" />
+        <option value="$PROJECT_DIR$/satahan/templates/base.html" />
+        <option value="$PROJECT_DIR$/satahan/templates/index.html" />
+        <option value="$PROJECT_DIR$/satahan/static/ckeditor/plugins/imageresize/plugin.js" />
+        <option value="$PROJECT_DIR$/satahan/static/scripts/satahan.js" />
+        <option value="$PROJECT_DIR$/satahan/attachments.py" />
+        <option value="$PROJECT_DIR$/satahan/group.py" />
+        <option value="$PROJECT_DIR$/satahan/note.py" />
+        <option value="$PROJECT_DIR$/satahan/upload.py" />
+        <option value="$PROJECT_DIR$/satahan/templates/manage_group.html" />
+        <option value="$PROJECT_DIR$/satahan/templates/view_group.html" />
+        <option value="$PROJECT_DIR$/satahan/facebook.py" />
+        <option value="$PROJECT_DIR$/satahan/back.py" />
+      </list>
+    </option>
+  </component>
+  <component name="NamedScopeManager">
+    <order />
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="satahan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="satahan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="satahan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="satahan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="satahan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="satahan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="satahan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="satahan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="satahan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="satahan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="satahan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="satahan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="flask_user" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="satahan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="satahan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="satahan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scratches" />
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="C:/Git" />
+    <property name="FullScreen" value="false" />
+    <property name="DefaultHtmlFileTemplate" value="Html5" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode" />
+    <property name="settings.editor.splitter.proportion" value="0.2" />
+    <property name="recentsLimit" value="5" />
+    <property name="full.screen.before.presentation.mode" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Chamit\Desktop\satahan\satahan\static" />
+      <recent name="C:\Users\Chamit\Desktop\satahan\satahan\templates" />
+      <recent name="C:\Users\Chamit\Desktop\satahan\satahan" />
+      <recent name="C:\Users\Chamit\Desktop\satahan" />
+      <recent name="C:\Users\Chamit\Desktop\satahan\satahan\static\scripts" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.tag_helper">
+    <configuration default="false" name="tag_helper" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/satahan" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="satahan" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/satahan/tag_helper.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="satahan" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Attests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="satahan" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Doctests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="satahan" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Nosetests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="satahan" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Unittests">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="satahan" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PUREUNITTEST" value="true" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <method />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="py.test">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="satahan" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="testToRun" value="" />
+      <option name="keywords" value="" />
+      <option name="params" value="" />
+      <option name="USE_PARAM" value="false" />
+      <option name="USE_KEYWORD" value="false" />
+      <method />
+    </configuration>
+    <list size="1">
+      <item index="0" class="java.lang.String" itemvalue="Python.tag_helper" />
+    </list>
+    <recent_temporary>
+      <list size="1">
+        <item index="0" class="java.lang.String" itemvalue="Python.tag_helper" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="468c1538-8e93-40d3-8b18-83f3dcea38ff" name="Default" comment="" />
+      <created>1440742058626</created>
+      <option name="number" value="Default" />
+      <updated>1440742058626</updated>
+    </task>
+    <task id="LOCAL-00054" summary="changes to tags to try and avoid error, The IN-predicate on &quot;notetag.idtag&quot; was invoked with an empty sequence">
+      <created>1453206059826</created>
+      <option name="number" value="00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1453206059826</updated>
+    </task>
+    <task id="LOCAL-00055" summary="ckeditor local version added with map and image drag and drop plug in">
+      <created>1453289440994</created>
+      <option name="number" value="00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1453289440995</updated>
+    </task>
+    <task id="LOCAL-00056" summary="added YouTube plugin to ckeditor">
+      <created>1453372200360</created>
+      <option name="number" value="00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1453372200360</updated>
+    </task>
+    <task id="LOCAL-00057" summary="bug fix: add_note issue for admin users">
+      <created>1453375703408</created>
+      <option name="number" value="00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1453375703409</updated>
+    </task>
+    <task id="LOCAL-00058" summary="bug fix:sort notes. newest first">
+      <created>1453434348609</created>
+      <option name="number" value="00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1453434348610</updated>
+    </task>
+    <task id="LOCAL-00059" summary="group changed to topic in display">
+      <created>1454200936215</created>
+      <option name="number" value="00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1454200936217</updated>
+    </task>
+    <task id="LOCAL-00060" summary="if published without tags, draft is saved.">
+      <created>1454322216425</created>
+      <option name="number" value="00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1454322216426</updated>
+    </task>
+    <task id="LOCAL-00061" summary="change publishing loop so that topics and tags can be created as we go">
+      <created>1454495978267</created>
+      <option name="number" value="00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1454495978268</updated>
+    </task>
+    <task id="LOCAL-00062" summary="added iframe support to ckeditor">
+      <created>1454496903397</created>
+      <option name="number" value="00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1454496903398</updated>
+    </task>
+    <task id="LOCAL-00063" summary="added if publishing check for Cancel publishing btn">
+      <created>1454499086756</created>
+      <option name="number" value="00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1454499086808</updated>
+    </task>
+    <task id="LOCAL-00064" summary="two attachment files sizes. drag and drop images 1MB. other attachments 16MB.">
+      <created>1454585566058</created>
+      <option name="number" value="00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1454585566059</updated>
+    </task>
+    <task id="LOCAL-00065" summary="fix 413 raise error">
+      <created>1454587374726</created>
+      <option name="number" value="00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1454587374726</updated>
+    </task>
+    <task id="LOCAL-00066" summary="fix 413 raise error">
+      <created>1454588991838</created>
+      <option name="number" value="00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1454588991838</updated>
+    </task>
+    <task id="LOCAL-00067" summary="fix 413 raise error">
+      <created>1454589580717</created>
+      <option name="number" value="00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1454589580717</updated>
+    </task>
+    <task id="LOCAL-00068" summary="resize option for img and iframe">
+      <created>1454670957808</created>
+      <option name="number" value="00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1454670957809</updated>
+    </task>
+    <task id="LOCAL-00069" summary="mobile css improvement">
+      <created>1454726443752</created>
+      <option name="number" value="00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1454726443753</updated>
+    </task>
+    <task id="LOCAL-00070" summary="adding viewport meta tag in the html head">
+      <created>1454802161468</created>
+      <option name="number" value="00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1454802161469</updated>
+    </task>
+    <task id="LOCAL-00071" summary="increase mobile screen max width">
+      <created>1454803962345</created>
+      <option name="number" value="00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1454803962345</updated>
+    </task>
+    <task id="LOCAL-00072" summary="increased drag and drop image size to 2MB">
+      <created>1454806473706</created>
+      <option name="number" value="00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1454806473707</updated>
+    </task>
+    <task id="LOCAL-00073" summary="enhance info description">
+      <created>1454806731660</created>
+      <option name="number" value="00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1454806731660</updated>
+    </task>
+    <task id="LOCAL-00074" summary="bug fix: update create datetime to now when note is published">
+      <created>1454807459062</created>
+      <option name="number" value="00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1454807459062</updated>
+    </task>
+    <task id="LOCAL-00075" summary="title changed to match page title">
+      <created>1454847319934</created>
+      <option name="number" value="00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1454847319935</updated>
+    </task>
+    <task id="LOCAL-00076" summary="drag and drop image size reduced to 1MB again">
+      <created>1454847582274</created>
+      <option name="number" value="00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1454847582274</updated>
+    </task>
+    <task id="LOCAL-00077" summary="title added to taggroup page">
+      <created>1454848795285</created>
+      <option name="number" value="00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1454848795285</updated>
+    </task>
+    <task id="LOCAL-00078" summary="facebook login image added">
+      <created>1454929953568</created>
+      <option name="number" value="00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1454929953569</updated>
+    </task>
+    <task id="LOCAL-00079" summary="facebook login image added">
+      <created>1454930055978</created>
+      <option name="number" value="00079" />
+      <option name="project" value="LOCAL" />
+      <updated>1454930055978</updated>
+    </task>
+    <task id="LOCAL-00080" summary="enhanced image plug in added to ckeditor">
+      <created>1455013315495</created>
+      <option name="number" value="00080" />
+      <option name="project" value="LOCAL" />
+      <updated>1455013315496</updated>
+    </task>
+    <task id="LOCAL-00081" summary="possible fix for performance issue with in clause">
+      <created>1455014548349</created>
+      <option name="number" value="00081" />
+      <option name="project" value="LOCAL" />
+      <updated>1455014548350</updated>
+    </task>
+    <task id="LOCAL-00082" summary="metadata added to homepage. it will display text from the first note.">
+      <created>1455018796062</created>
+      <option name="number" value="00082" />
+      <option name="project" value="LOCAL" />
+      <updated>1455018796063</updated>
+    </task>
+    <task id="LOCAL-00083" summary="metadata added to homepage. it will display title from the first note.">
+      <created>1455019378267</created>
+      <option name="number" value="00083" />
+      <option name="project" value="LOCAL" />
+      <updated>1455019378267</updated>
+    </task>
+    <task id="LOCAL-00084" summary="metadata added to homepage. it will display title + content from the first note.">
+      <created>1455022227797</created>
+      <option name="number" value="00084" />
+      <option name="project" value="LOCAL" />
+      <updated>1455022227797</updated>
+    </task>
+    <task id="LOCAL-00085" summary="images loaded through nginx">
+      <created>1455103457971</created>
+      <option name="number" value="00085" />
+      <option name="project" value="LOCAL" />
+      <updated>1455103457971</updated>
+    </task>
+    <task id="LOCAL-00086" summary="bugfix: img path fixed">
+      <created>1455181271908</created>
+      <option name="number" value="00086" />
+      <option name="project" value="LOCAL" />
+      <updated>1455181271909</updated>
+    </task>
+    <task id="LOCAL-00087" summary="enhancements to index and about pages">
+      <created>1455187272131</created>
+      <option name="number" value="00087" />
+      <option name="project" value="LOCAL" />
+      <updated>1455187272132</updated>
+    </task>
+    <task id="LOCAL-00088" summary="static access to up uploads removed">
+      <created>1455618471621</created>
+      <option name="number" value="00088" />
+      <option name="project" value="LOCAL" />
+      <updated>1455618471622</updated>
+    </task>
+    <task id="LOCAL-00089" summary="fixed image url">
+      <created>1455618659765</created>
+      <option name="number" value="00089" />
+      <option name="project" value="LOCAL" />
+      <updated>1455618659765</updated>
+    </task>
+    <task id="LOCAL-00090" summary="server upload directory changed">
+      <created>1455619056076</created>
+      <option name="number" value="00090" />
+      <option name="project" value="LOCAL" />
+      <updated>1455619056077</updated>
+    </task>
+    <task id="LOCAL-00091" summary="changed website description">
+      <created>1455619396264</created>
+      <option name="number" value="00091" />
+      <option name="project" value="LOCAL" />
+      <updated>1455619396264</updated>
+    </task>
+    <task id="LOCAL-00092" summary="Google tracking id added">
+      <created>1455620107172</created>
+      <option name="number" value="00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1455620107172</updated>
+    </task>
+    <task id="LOCAL-00093" summary="google site verification added">
+      <created>1455621344956</created>
+      <option name="number" value="00093" />
+      <option name="project" value="LOCAL" />
+      <updated>1455621344956</updated>
+    </task>
+    <task id="LOCAL-00094" summary="image resize added">
+      <created>1455794034952</created>
+      <option name="number" value="00094" />
+      <option name="project" value="LOCAL" />
+      <updated>1455794034953</updated>
+    </task>
+    <task id="LOCAL-00095" summary="quick change to hide content behind login">
+      <created>1455797354470</created>
+      <option name="number" value="00095" />
+      <option name="project" value="LOCAL" />
+      <updated>1455797354470</updated>
+    </task>
+    <task id="LOCAL-00096" summary="update imageresize plugin">
+      <created>1455970744233</created>
+      <option name="number" value="00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1455970744234</updated>
+    </task>
+    <task id="LOCAL-00097" summary="change file encoding">
+      <created>1455971149216</created>
+      <option name="number" value="00097" />
+      <option name="project" value="LOCAL" />
+      <updated>1455971149216</updated>
+    </task>
+    <task id="LOCAL-00098" summary="image size sent from server">
+      <created>1455974550180</created>
+      <option name="number" value="00098" />
+      <option name="project" value="LOCAL" />
+      <updated>1455974550180</updated>
+    </task>
+    <task id="LOCAL-00099" summary="bug fix: image width and height should be form size tuple">
+      <created>1455974936319</created>
+      <option name="number" value="00099" />
+      <option name="project" value="LOCAL" />
+      <updated>1455974936319</updated>
+    </task>
+    <task id="LOCAL-00100" summary="image view and download requires login">
+      <created>1455975162086</created>
+      <option name="number" value="00100" />
+      <option name="project" value="LOCAL" />
+      <updated>1455975162087</updated>
+    </task>
+    <task id="LOCAL-00101" summary="login needed to view tg">
+      <created>1456224364419</created>
+      <option name="number" value="00101" />
+      <option name="project" value="LOCAL" />
+      <updated>1456224364420</updated>
+    </task>
+    <task id="LOCAL-00102" summary="no login for index and next url fix.">
+      <created>1456312622148</created>
+      <option name="number" value="00102" />
+      <option name="project" value="LOCAL" />
+      <updated>1456312622149</updated>
+    </task>
+    <option name="localTasksCounter" value="103" />
+    <servers />
+  </component>
+  <component name="TodoView" selected-index="4">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="false" />
+    <layout>
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16745655" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32937366" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32937366" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.53846157" sideWeight="0.4359375" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41576675" sideWeight="0.5640625" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32937366" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33693305" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24960506" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32937366" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+    </layout>
+    <layout-to-restore>
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32937366" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32937366" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.53846157" sideWeight="0.4359375" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32937366" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28725702" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32937366" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16903633" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35961124" sideWeight="0.5640625" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24960506" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+    </layout-to-restore>
+  </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
+    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+      <collection />
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="title added to taggroup page" />
+    <MESSAGE value="facebook login image added" />
+    <MESSAGE value="enhanced image plug in added to ckeditor" />
+    <MESSAGE value="possible fix for performance issue with in clause" />
+    <MESSAGE value="metadata added to homepage. it will display text from the first note." />
+    <MESSAGE value="metadata added to homepage. it will display title from the first note." />
+    <MESSAGE value="metadata added to homepage. it will display title + content from the first note." />
+    <MESSAGE value="images loaded through nginx" />
+    <MESSAGE value="bugfix: img path fixed" />
+    <MESSAGE value="enhancements to index and about pages" />
+    <MESSAGE value="static access to up uploads removed" />
+    <MESSAGE value="fixed image url" />
+    <MESSAGE value="server upload directory changed" />
+    <MESSAGE value="changed website description" />
+    <MESSAGE value="Google tracking id added" />
+    <MESSAGE value="google site verification added" />
+    <MESSAGE value="image resize added" />
+    <MESSAGE value="quick change to hide content behind login" />
+    <MESSAGE value="update imageresize plugin" />
+    <MESSAGE value="change file encoding" />
+    <MESSAGE value="image size sent from server" />
+    <MESSAGE value="bug fix: image width and height should be form size tuple" />
+    <MESSAGE value="image view and download requires login" />
+    <MESSAGE value="login needed to view tg" />
+    <MESSAGE value="no login for index and next url fix." />
+    <option name="LAST_COMMIT_MESSAGE" value="no login for index and next url fix." />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/satahan/templates/about.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="10" column="84" selection-start-line="10" selection-start-column="84" selection-end-line="10" selection-end-column="84" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/start.bat">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="16" selection-start-line="0" selection-start-column="16" selection-end-line="0" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/start.bat">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="16" selection-start-line="0" selection-start-column="16" selection-end-line="0" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/satahan/static/check_radio_sheet.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/satahan/templates/tag_delete_conf_dlg.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="13" column="23" selection-start-line="13" selection-start-column="23" selection-end-line="13" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.PyCharm40/system/python_stubs/-1442825926/time.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="228" column="4" selection-start-line="228" selection-start-column="4" selection-end-line="228" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/satahan/templates/tag_edit_dlg.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="16" column="36" selection-start-line="16" selection-start-column="36" selection-end-line="16" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/runserver.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="7" column="23" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/satahan/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="39" column="15" selection-start-line="39" selection-start-column="15" selection-end-line="39" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/satahan/templates/flask_user/user_profile.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="17" column="14" selection-start-line="17" selection-start-column="14" selection-end-line="17" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/satahan/static/ckeditor/LICENSE.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.34879407">
+          <caret line="781" column="2" selection-start-line="781" selection-start-column="2" selection-end-line="781" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/satahan/static/ckeditor/plugins/icons.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/satahan/static/ckeditor/samples/js/sample.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="10" column="57" selection-start-line="10" selection-start-column="57" selection-end-line="10" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/satahan/templates/edit_note.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.8846154">
+          <caret line="9" column="130" selection-start-line="9" selection-start-column="130" selection-end-line="9" selection-end-column="130" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/satahan/templates/taggroup_edit_dlg.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="11" column="20" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/satahan/templates/manage_tags.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="13" column="15" selection-start-line="13" selection-start-column="15" selection-end-line="13" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Python27/Lib/site-packages/pip/_vendor/requests/adapters.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5277778">
+          <caret line="428" column="37" selection-start-line="428" selection-start-column="27" selection-end-line="428" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Python27/Lib/site-packages/setuptools/package_index.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="1048" column="60" selection-start-line="1048" selection-start-column="52" selection-end-line="1048" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Python27/Lib/site-packages/pip/_vendor/requests/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="850" column="18" selection-start-line="850" selection-start-column="18" selection-end-line="850" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/satahan/model.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="112" column="16" selection-start-line="112" selection-start-column="4" selection-end-line="112" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/satahan/templates/tag_ctrl.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="21" column="28" selection-start-line="21" selection-start-column="28" selection-end-line="21" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/satahan/static/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="199" column="0" selection-start-line="199" selection-start-column="0" selection-end-line="199" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/satahan/admin_points.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.12">
+          <caret line="10" column="28" selection-start-line="10" selection-start-column="28" selection-end-line="10" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/satahan/comment.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.2">
+          <caret line="19" column="23" selection-start-line="19" selection-start-column="23" selection-end-line="19" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/satahan/database.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-12.24">
+          <caret line="21" column="15" selection-start-line="21" selection-start-column="15" selection-end-line="21" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/satahan/tag.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-31.28">
+          <caret line="51" column="0" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/satahan/tag_helper.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="46" column="67" selection-start-line="46" selection-start-column="67" selection-end-line="46" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/satahan/timesince.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/satahan/templates/add_note.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.022222223">
+          <caret line="39" column="4" selection-start-line="39" selection-start-column="4" selection-end-line="39" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/satahan/static/ckeditor/CHANGES.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="213" column="191" selection-start-line="213" selection-start-column="191" selection-end-line="213" selection-end-column="191" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/satahan/static/ckeditor/build-config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="88" column="9" selection-start-line="88" selection-start-column="9" selection-end-line="88" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/satahan/static/ckeditor/ckeditor.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="1146" column="503" selection-start-line="1146" selection-start-column="503" selection-end-line="1146" selection-end-column="503" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/satahan/templates/about.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="10" column="84" selection-start-line="10" selection-start-column="84" selection-end-line="10" selection-end-column="84" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/satahan/templates/home.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="6" column="74" selection-start-line="6" selection-start-column="74" selection-end-line="6" selection-end-column="74" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/satahan/templates/note_full.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="32" column="145" selection-start-line="32" selection-start-column="145" selection-end-line="32" selection-end-column="145" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/satahan/templates/manage_attachments.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="2" column="141" selection-start-line="2" selection-start-column="141" selection-end-line="2" selection-end-column="141" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/satahan/configclass.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="37" column="26" selection-start-line="37" selection-start-column="26" selection-end-line="37" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#9#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/satahan/templates/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/satahan/static/ckeditor/config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="16" column="26" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/satahan/static/ckeditor/plugins/image2/dialogs/image2.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/satahan/static/ckeditor/plugins/imageresize/plugin.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="20" column="16" selection-start-line="20" selection-start-column="16" selection-end-line="20" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/satahan/static/scripts/satahan.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="54" column="11" selection-start-line="54" selection-start-column="11" selection-end-line="54" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/satahan/attachments.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.0">
+          <caret line="120" column="0" selection-start-line="120" selection-start-column="0" selection-end-line="120" selection-end-column="0" />
+          <folding>
+            <element signature="e#23#147#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/satahan/group.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.84">
+          <caret line="71" column="36" selection-start-line="71" selection-start-column="36" selection-end-line="71" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/satahan/upload.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-16.52">
+          <caret line="75" column="32" selection-start-line="75" selection-start-column="32" selection-end-line="75" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/satahan/templates/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.6153846">
+          <caret line="57" column="4" selection-start-line="57" selection-start-column="4" selection-end-line="57" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/satahan/templates/manage_group.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.269231">
+          <caret line="75" column="52" selection-start-line="75" selection-start-column="52" selection-end-line="75" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/satahan/templates/view_group.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.461538">
+          <caret line="16" column="44" selection-start-line="16" selection-start-column="44" selection-end-line="16" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/satahan/facebook.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-20.4">
+          <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/satahan/note.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.0">
+          <caret line="31" column="23" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/satahan/back.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8756661">
+          <caret line="31" column="40" selection-start-line="31" selection-start-column="40" selection-end-line="31" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
